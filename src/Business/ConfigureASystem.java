@@ -17,8 +17,8 @@ public class ConfigureASystem {
     public static Ecosystem configure(){
    Ecosystem system= Ecosystem.getInstance();
    
-   Employee employee= system.getEmployeeDirectory().createEmployee("SYSTEM ADMIN");
-   UserAccount ua= system.getUserAccountDirectory().createUserAccount("admin","admin", employee, new SystemAdminRole());
+//   Employee employee= system.getEmployeeDirectory().createEmployee("SYSTEM ADMIN");
+//   UserAccount ua= system.getUserAccountDirectory().createUserAccount("admin","admin", employee, new SystemAdminRole());
     
     return system;
     }

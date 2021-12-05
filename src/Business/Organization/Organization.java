@@ -6,10 +6,10 @@
 package Business.Organization;
 
 import Business.Employee.EmployeeDirectory;
+import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
-import com.sun.corba.se.spi.orbutil.threadpool.WorkQueue;
+import Business.WorkQueue.WorkQueue;
 import java.util.HashSet;
-import javax.management.relation.Role;
 
 /**
  *
@@ -49,7 +49,7 @@ public abstract class Organization {
     public Organization (String name)
     {
       this.name = name;
-//      workQueue = new WorkQueue();
+      workQueue = new WorkQueue();
       employeeDirectory = new EmployeeDirectory();
       userAccountDirectory = new UserAccountDirectory();
      
@@ -104,6 +104,10 @@ public abstract class Organization {
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
     }
+
+    
+    
+    
     
     @Override
     public String toString()

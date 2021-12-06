@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author vidhi
  */
-public class EventMaker extends Role{
+public class EventMakerRole extends Role{
     //public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
         //return new EventMakerWorkArea(userProcessContainer,account,(ChangeMakerOrganization)organization,enterprise,system);
     //}

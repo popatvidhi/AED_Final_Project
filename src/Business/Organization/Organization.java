@@ -30,12 +30,12 @@ public abstract class Organization {
     
     public enum Type {
         Victim("Victim Organization"),
-        ChangeMaker("ChangeMaker Organization"),
+        EventMaker("EventMaker Organization"),
         Volunteer("Volunteer Organization"),
         NGO("NGO Organization"),
-        Supplier("Supplier"),
+        Provider("Provider"),
         Doctor("Doctor"),
-        LegalFirm("LegalFirm");
+        Police("Police");
         
         private String value;
         private Type(String value){

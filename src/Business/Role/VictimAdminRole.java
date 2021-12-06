@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author vidhi
  */
-public class VictimAdminRole{
+public class VictimAdminRole extends Role{
     //public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
         //return new VictimAdminWorkArea(userProcessContainer,enterprise);
     //}
@@ -24,4 +24,9 @@ public class VictimAdminRole{
 {
    return Role.RoleType.VictimAdmin.getValue();
 }
+
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Ecosystem system) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author vidhi
  */
-public class CommunityAdminRole {
+public class CommunityAdminRole extends Role{
     //public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
         //return new CommunityAdminWorkArea(userProcessContainer,enterprise,system);
     //} 
@@ -24,4 +24,9 @@ public class CommunityAdminRole {
 {
    return Role.RoleType.CommunityAdminRole.getValue();
 }
+
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Ecosystem system) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

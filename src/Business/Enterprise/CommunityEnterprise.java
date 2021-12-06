@@ -1,0 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Business.Enterprise;
+
+import Business.Role.EventMakerAdminRole;
+import Business.Role.Role;
+import Business.Role.VictimAdminRole;
+import Business.Role.VolunteerAdminRole;
+import java.util.HashSet;
+import Business.Role.VictimAdminRole;
+import Business.Role.CommunityAdminRole;
+
+/**
+ *
+ * @author vidhi
+ */
+public class CommunityEnterprise extends Enterprise{
+    public CommunityEnterprise(String name){
+        super(name,Enterprise.EnterpriseType.Community);
+    }
+    
+    @Override
+    public HashSet<Role> getSupportedRole(){
+       
+        role.add(new EventMakerAdminRole());
+              
+        role.add(new VictimAdminRole());
+        
+        role.add(new VolunteerAdminRole());
+       
+        return role;
+        
+    }
+}

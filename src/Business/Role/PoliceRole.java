@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author vidhi
  */
-public class PoliceRole {
+public class PoliceRole extends Role{
     //public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
         //return new LawyerWorkArea(userProcessContainer,account,(LegalFirmOrganization)organization,enterprise,system);
     //}
@@ -24,4 +24,9 @@ public class PoliceRole {
 {
    return Role.RoleType.PoliceRole.getValue();
 }
+
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Ecosystem system) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

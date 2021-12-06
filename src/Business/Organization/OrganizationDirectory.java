@@ -27,9 +27,9 @@ public class OrganizationDirectory {
     public Organization createOrganization(Organization.Type type,String name)
     {
     Organization organization = null;
-       /* if (type.getValue().equals(Organization.Type.ChangeMaker.getValue())){
+        if (type.getValue().equals(Organization.Type.EventMaker.getValue())){
             
-            organization = new ChangeMakerOrganization();
+            organization = new EventMakerOrganization();
             organization.setOrgName(name);
             organizationList.add(organization);
         }
@@ -43,8 +43,8 @@ public class OrganizationDirectory {
             organization.setOrgName(name);
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Organization.Type.Supplier.getValue())){
-            organization = new SupplierOrganization(name);
+        else if (type.getValue().equals(Organization.Type.Provider.getValue())){
+            organization = new ProviderOrganization(name);
             organization.setOrgName(name);
             organizationList.add(organization);
         }
@@ -53,8 +53,8 @@ public class OrganizationDirectory {
             organization.setOrgName(name);
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Organization.Type.LegalFirm.getValue())){
-            organization = new LegalFirmOrganization(name);
+        else if (type.getValue().equals(Organization.Type.Police.getValue())){
+            organization = new PoliceOrganization(name);
             organization.setOrgName(name);
             organizationList.add(organization);
         }
@@ -62,7 +62,7 @@ public class OrganizationDirectory {
             organization = new DoctorOrganization();
             organization.setOrgName(name);
             organizationList.add(organization);
-        }*/
+        }
         
         return organization;
     }

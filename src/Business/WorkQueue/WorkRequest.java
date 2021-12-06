@@ -5,7 +5,14 @@
  */
 package Business.WorkQueue;
 
+import Business.EventMaker.EventMaker;
+import Business.NGO.NGO;
+import Business.Police.Police;
+import Business.Provider.Item;
+import Business.Provider.Provider;
 import Business.UserAccount.UserAccount;
+import Business.Victim.Victim;
+import Business.Volunteer.Volunteer;
 import java.util.Date;
 
 /**
@@ -19,12 +26,45 @@ public abstract class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
+    private EventMaker eventMaker;
+    private Victim changeSeeker;
+    private NGO ngo;
+    private Provider provider;
+    private Item item;
+    private Volunteer volunteer;
+    private Police police;
+
 
     
     public WorkRequest(){
         requestDate = new Date();
     }
-   
+    
+    public Police getPolice() {
+        return police;
+    }
+
+    public void setPolice(Police police) {
+        this.police = police;
+    }
+
+    public Volunteer getVolunteer() {
+        return volunteer;
+    }
+
+    public void setVolunteer(Volunteer volunteer) {
+        this.volunteer = volunteer;
+    }
+
+    
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
     
     public String getSubject() {
         return subject;
@@ -53,6 +93,15 @@ public abstract class WorkRequest {
     public String getStatus() {
         return status;
     }
+
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
+    }
+
     
     public void setStatus(String status) {
         this.status = status;
@@ -72,6 +121,30 @@ public abstract class WorkRequest {
 
     public void setResolveDate(Date resolveDate) {
         this.resolveDate = resolveDate;
+    }
+
+    public EventMaker getEventMaker() {
+        return eventMaker;
+    }
+
+    public void setEventMaker(EventMaker eventMaker) {
+        this.eventMaker = eventMaker;
+    }
+
+    public Victim getChangeSeeker() {
+        return changeSeeker;
+    }
+
+    public void setChangeSeeker(Victim changeSeeker) {
+        this.changeSeeker = changeSeeker;
+    }
+
+    public NGO getNgo() {
+        return ngo;
+    }
+
+    public void setNgo(NGO ngo) {
+        this.ngo = ngo;
     }
 
     @Override

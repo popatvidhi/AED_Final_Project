@@ -3,35 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.EventMaker;
+package Business.Victim;
 
 import Business.WorkQueue.WorkQueue;
 
 /**
  *
- * @author ymayank97
+ * @author vidhi
  */
-public class EventMaker {
+public class Victim {
     private String name;
     private String id;
-    private WorkQueue workQueue;
+    private WorkQueue workqueue;
     
     private static int count;
     
-     public EventMaker(){
+     public Victim(){
          
-        id= "EM"+(++count);
-        workQueue=new WorkQueue();
+        id= "CS"+(++count);
     }
 
-    public WorkQueue getWorkQueue() {
-        return workQueue;
+    public WorkQueue getWorkqueue() {
+        return workqueue;
     }
 
-    public void setWorkQueue(WorkQueue workQueue) {
-        this.workQueue = workQueue;
+    public void setWorkqueue(WorkQueue workqueue) {
+        this.workqueue = workqueue;
     }
-
+ 
      
     public String getName() {
         return name;
@@ -53,6 +52,4 @@ public class EventMaker {
      public String toString(){
          return name;
      }
-    
 }
-

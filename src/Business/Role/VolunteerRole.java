@@ -8,7 +8,9 @@ package Business.Role;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
+import Business.Organization.VolunteerOrganization;
 import Business.UserAccount.UserAccount;
+import UI.VolunteerOrganization.DashboardVolunteer;
 import javax.swing.JPanel;
 
 /**
@@ -16,17 +18,14 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public class VolunteerRole extends Role{
-    //public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
-        //return new VolunteerDashboard(userProcessContainer,account,(VolunteerOrganization)organization,enterprise,system);
-    //}   
+        @Override
+        public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system)
+        {
+            return new DashboardVolunteer(userProcessContainer,account,(VolunteerOrganization)organization,enterprise,system);
+        }   
         @Override
         public String toString()
 {
    return Role.RoleType.VolunteerRole.getValue();
 }
-
-    @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Ecosystem system) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

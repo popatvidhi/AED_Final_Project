@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.EventMaker;
+package UI.CommunityEnterprise;
 
 import UI.SystemAdmin.*;
 import Business.Ecosystem;
@@ -57,6 +57,8 @@ public class ManageOrganization extends javax.swing.JPanel {
     private void populateCmb(){
         comboOrg.removeAllItems();
         comboOrg.addItem(Organization.Type.EventMaker);
+        comboOrg.addItem(Organization.Type.Victim);
+        comboOrg.addItem(Organization.Type.Volunteer);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -249,7 +251,8 @@ public class ManageOrganization extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(txtName.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Text Field Cannot be Empty");
-        }else{ Organization.Type type=(Organization.Type) comboOrg.getSelectedItem();
+        }else{ 
+        Organization.Type type=(Organization.Type) comboOrg.getSelectedItem();
         orgdirectory.createOrganization(type,txtName.getText());
         populateTbl();
         }

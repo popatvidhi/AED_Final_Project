@@ -5,6 +5,14 @@
  */
 package UI.SystemAdmin;
 
+import Business.Ecosystem;
+import Business.Network.Network;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ymayank97
@@ -14,10 +22,26 @@ public class ManageNetwork extends javax.swing.JPanel {
     /**
      * Creates new form ManageNetwork
      */
-    public ManageNetwork() {
+    private JPanel panelWorkArea;
+    private Ecosystem system;
+    
+    public ManageNetwork(JPanel userProcessContainer,Ecosystem system) {
         initComponents();
+        this.panelWorkArea=userProcessContainer;
+        this.system=system;
+        populateTableNetwork();
     }
+    
+    public void populateTableNetwork(){
+        DefaultTableModel model = (DefaultTableModel) tblNetwork.getModel();
 
+        model.setRowCount(0);
+        for (Network network : system.getNetworkList()) {
+            Object[] row = new Object[1];
+            row[0] = network;
+            model.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,9 +109,19 @@ public class ManageNetwork extends javax.swing.JPanel {
 
         btnAdd.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnAdd.setText("Add Network");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnDelete.setText("Delete Network");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -126,6 +160,11 @@ public class ManageNetwork extends javax.swing.JPanel {
 
         btnEnterpriseAdmin1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnEnterpriseAdmin1.setText("Back");
+        btnEnterpriseAdmin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnterpriseAdmin1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -179,6 +218,50 @@ public class ManageNetwork extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEnterpriseAdmin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterpriseAdmin1ActionPerformed
+        // TODO add your handling code here:
+        panelWorkArea.remove(this);
+        Component[] componentArray = panelWorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemAdminWorkArea sysAdminwjp = (SystemAdminWorkArea) component;
+        //sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) panelWorkArea.getLayout();
+        layout.previous(panelWorkArea);
+    }//GEN-LAST:event_btnEnterpriseAdmin1ActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        String name = txtName.getText();
+
+        Network network = system.addNetwork();
+        network.setName(name);
+
+        populateTableNetwork();
+        txtName.setText("");
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRow= tblNetwork.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+
+            Network p=(Network) tblNetwork.getValueAt(selectedRow, 0);
+
+            for (Network network : system.getNetworkList()) {
+                    if(p==network){
+                      system.getNetworkList().remove(p);
+                        break;
+                    }
+            }
+
+            JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+            populateTableNetwork();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

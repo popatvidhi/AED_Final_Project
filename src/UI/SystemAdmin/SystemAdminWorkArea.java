@@ -5,6 +5,10 @@
  */
 package UI.SystemAdmin;
 
+import Business.Ecosystem;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ymayank97
@@ -14,8 +18,13 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form SystemAdminWorkArea
      */
-    public SystemAdminWorkArea() {
+    private Ecosystem system;
+    private JPanel panelWorkArea;
+    
+     public SystemAdminWorkArea(JPanel userProcessContainer,Ecosystem system) {
         initComponents();
+        this.panelWorkArea=userProcessContainer;
+        this.system=system;
     }
 
     /**
@@ -39,6 +48,8 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         btnEnterpriseAdmin = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+
+        setLayout(new java.awt.CardLayout());
 
         jPanel2.setBackground(new java.awt.Color(135, 109, 187));
 
@@ -73,14 +84,29 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
 
         btnNetwork.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnNetwork.setText("Network");
+        btnNetwork.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNetworkActionPerformed(evt);
+            }
+        });
 
         btnEnterprise.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnEnterprise.setText("Enterprise");
+        btnEnterprise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnterpriseActionPerformed(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/SystemAdmin/enterprise.png"))); // NOI18N
 
         btnEnterpriseAdmin.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnEnterpriseAdmin.setText("Enterprise Admin");
+        btnEnterpriseAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnterpriseAdminActionPerformed(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/SystemAdmin/admin.png"))); // NOI18N
 
@@ -113,11 +139,11 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
                     .addComponent(btnNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEnterpriseAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
@@ -171,27 +197,32 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1739, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 599, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        add(jPanel1, "card2");
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNetworkActionPerformed
+        // TODO add your handling code here:
+        ManageNetwork sysNew = new ManageNetwork(panelWorkArea,system);
+        panelWorkArea.add("ManageNetwork", sysNew);
+        CardLayout layout= (CardLayout) panelWorkArea.getLayout();
+        layout.next(panelWorkArea);
+    }//GEN-LAST:event_btnNetworkActionPerformed
+
+    private void btnEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterpriseActionPerformed
+        // TODO add your handling code here:
+        ManageEnterprise sysEnt = new ManageEnterprise(panelWorkArea,system);
+        panelWorkArea.add("ManageEnterprise", sysEnt);
+        CardLayout layout= (CardLayout) panelWorkArea.getLayout();
+        layout.next(panelWorkArea); 
+    }//GEN-LAST:event_btnEnterpriseActionPerformed
+
+    private void btnEnterpriseAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterpriseAdminActionPerformed
+        // TODO add your handling code here:
+        ManageEnterpriseAdmin sysEntAdmin = new ManageEnterpriseAdmin(panelWorkArea,system);
+        panelWorkArea.add("ManageEnterpriseAdmin", sysEntAdmin);
+        CardLayout layout= (CardLayout) panelWorkArea.getLayout();
+        layout.next(panelWorkArea); 
+    }//GEN-LAST:event_btnEnterpriseAdminActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

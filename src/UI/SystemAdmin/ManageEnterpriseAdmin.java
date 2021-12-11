@@ -5,6 +5,22 @@
  */
 package UI.SystemAdmin;
 
+import Business.Ecosystem;
+import Business.Employee.Employee;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Role.CommunityAdminRole;
+import Business.Role.DoctorAdminRole;
+import Business.Role.NGOAdminRole;
+import Business.Role.PoliceAdminRole;
+import Business.Role.ProviderAdminRole;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ymayank97
@@ -14,10 +30,50 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
     /**
      * Creates new form ManageEnterpriseAdmin
      */
-    public ManageEnterpriseAdmin() {
+    private JPanel panelWorkArea;
+    private Ecosystem system;
+    
+    public ManageEnterpriseAdmin(JPanel userProcessContainer,Ecosystem system) {
         initComponents();
+        this.panelWorkArea=userProcessContainer;
+        this.system=system;
+        populateTableEnterpriseAdmin();
+        populateComboBoxNetwork();
     }
+    private void populateTableEnterpriseAdmin() {
+        DefaultTableModel model = (DefaultTableModel) tblEnterprise.getModel();
 
+        model.setRowCount(0);
+        for (Network network : system.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                    Object[] row = new Object[3];
+                    row[0] = enterprise.getName();
+                    row[1] = network.getName();
+                    row[2] = userAccount;
+
+                    model.addRow(row);
+                }
+            }
+        }
+    }
+    
+    private void populateComboBoxNetwork() {
+        comboNetwork.removeAllItems();
+
+        for (Network network : system.getNetworkList()) {
+            comboNetwork.addItem(network.toString());
+        }
+    }
+    
+    private void populateComboBoxEnterprise(Network network) {
+        comboType.removeAllItems();
+
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            comboType.addItem(enterprise.toString());
+        }
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,8 +99,8 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         comboType = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
-        txtPasword = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        txtPasword = new javax.swing.JPasswordField();
         btnBack = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(135, 109, 187));
@@ -93,9 +149,19 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
 
         btnAdd.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnAdd.setText("Add Admin");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnDelete.setText("Delete Admin");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,18 +178,19 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         jLabel4.setText("Enterprise Type");
 
         comboNetwork.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        comboNetwork.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboNetwork.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboNetworkActionPerformed(evt);
+            }
+        });
 
         comboType.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        comboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Username");
 
         txtUsername.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        txtPasword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -172,10 +239,10 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPasword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                    .addComponent(txtPasword))
+                .addGap(32, 32, 32)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -184,6 +251,11 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
 
         btnBack.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -241,6 +313,85 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNetworkActionPerformed
+        // TODO add your handling code here:
+        Network network = (Network) comboNetwork.getSelectedItem();
+        if (network != null) {
+            populateComboBoxEnterprise(network);
+        }
+    }//GEN-LAST:event_comboNetworkActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        panelWorkArea.remove(this);
+        Component[] componentArray = panelWorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemAdminWorkArea sysAdminwjp = (SystemAdminWorkArea) component;
+        //sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) panelWorkArea.getLayout();
+        layout.previous(panelWorkArea);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        Enterprise enterprise = (Enterprise) comboType.getSelectedItem();
+
+        String username = txtUsername.getText();
+        String password = String.valueOf(txtPasword.getPassword());
+        String name = txtAdmin.getText();
+
+        Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
+        if (Ecosystem.checkIfUsernameIsUnique(username)) {
+            UserAccount account = null;
+            if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Community) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new CommunityAdminRole());
+            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new NGOAdminRole());
+            
+            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Provider) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ProviderAdminRole());
+            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Police) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new PoliceAdminRole());
+            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DoctorAdminRole());
+            }
+
+            populateTableEnterpriseAdmin();
+            txtUsername.setText("");
+            txtPasword.setText("");
+            txtAdmin.setText("");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblEnterprise.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            UserAccount p = (UserAccount) tblEnterprise.getValueAt(selectedRow, 2);
+
+            for (Network network : system.getNetworkList()) {
+                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                        if (p == userAccount) {
+                            enterprise.getUserAccountDirectory().getUserAccountList().remove(p);
+                            break;
+                        }
+
+                    }
+                }
+            }
+
+            JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+            populateTableEnterpriseAdmin();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -260,7 +411,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblEnterprise;
     private javax.swing.JTextField txtAdmin;
-    private javax.swing.JTextField txtPasword;
+    private javax.swing.JPasswordField txtPasword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

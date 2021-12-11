@@ -62,7 +62,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         comboNetwork.removeAllItems();
 
         for (Network network : system.getNetworkList()) {
-            comboNetwork.addItem(network.toString());
+            comboNetwork.addItem(network);
         }
     }
     
@@ -70,7 +70,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         comboType.removeAllItems();
 
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-            comboType.addItem(enterprise.toString());
+            comboType.addItem(enterprise);
         }
 
     }
@@ -95,8 +95,8 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         txtAdmin = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        comboNetwork = new javax.swing.JComboBox<>();
-        comboType = new javax.swing.JComboBox<>();
+        comboNetwork = new javax.swing.JComboBox();
+        comboType = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -315,7 +315,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
 
     private void comboNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNetworkActionPerformed
         // TODO add your handling code here:
-        Network network = (Network) comboNetwork.getSelectedItem();
+        Network network = (Network)comboNetwork.getSelectedItem();
         if (network != null) {
             populateComboBoxEnterprise(network);
         }
@@ -397,8 +397,8 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JComboBox<String> comboNetwork;
-    private javax.swing.JComboBox<String> comboType;
+    private javax.swing.JComboBox comboNetwork;
+    private javax.swing.JComboBox comboType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

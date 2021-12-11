@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.CommunityEnterprise;
+package UI.VolunteerOrganization;
 
 import UI.SystemAdmin.*;
 import Business.Ecosystem;
@@ -13,6 +13,7 @@ import Business.Network.Network;
 import Business.Organization.EventMakerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Organization.VolunteerOrganization;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -56,14 +57,18 @@ public class ManageEmployee extends javax.swing.JPanel {
         comboOrg.removeAllItems();
         
         for (Organization organization : orgdirectory.getOrganizationList()){
+            if(organization instanceof VolunteerOrganization)
             comboOrg.addItem(organization);
+            
         }
     }
     public void populateComboOrganizationEmp(){
         comboOrgSelect.removeAllItems();
-
+        
         for (Organization organization : orgdirectory.getOrganizationList()){
+             if(organization instanceof VolunteerOrganization)
             comboOrgSelect.addItem(organization);
+            
         }
     }
     /**

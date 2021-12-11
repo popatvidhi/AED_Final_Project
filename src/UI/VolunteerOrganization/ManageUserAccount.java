@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.CommunityEnterprise;
+package UI.VolunteerOrganization;
 
 import UI.SystemAdmin.*;
 import Business.Ecosystem;
@@ -13,14 +13,12 @@ import Business.EventMaker.EventMaker;
 import Business.Network.Network;
 import Business.Organization.EventMakerOrganization;
 import Business.Organization.Organization;
-import Business.Organization.VictimOrganization;
 import Business.Organization.VolunteerOrganization;
-import Business.Role.EventMakerAdminRole;
 import Business.Role.EventMakerRole;
 import Business.Role.Role;
-import Business.Role.VictimAdminRole;
-import Business.Role.VolunteerAdminRole;
+import Business.Role.VolunteerRole;
 import Business.UserAccount.UserAccount;
+import Business.Volunteer.Volunteer;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -51,7 +49,9 @@ public class ManageUserAccount extends javax.swing.JPanel {
         comboOrg.removeAllItems();
 
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if(organization instanceof VolunteerOrganization)
             comboOrg.addItem(organization);
+            
         }
     }
     
@@ -66,12 +66,9 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof EventMakerOrganization){
-            comboRole.addItem(new EventMakerAdminRole());        
-        }else if(organization instanceof VictimOrganization){
-            comboRole.addItem(new VictimAdminRole());
-        }else if(organization instanceof VolunteerOrganization){
-            comboRole.addItem(new VolunteerAdminRole());
+        if(organization instanceof VolunteerOrganization){
+            comboRole.addItem(new VolunteerRole());
+        
         }
       
     }
@@ -340,7 +337,16 @@ public class ManageUserAccount extends javax.swing.JPanel {
         Organization organization = (Organization) comboOrg.getSelectedItem();
         Employee employee = (Employee) comboEmp.getSelectedItem();
         Role role = (Role) comboRole.getSelectedItem();
-
+        
+        
+        if (organization instanceof VolunteerOrganization){
+           Volunteer vt = new Volunteer();
+            
+           vt.setVolunteerName(employee.getName());
+           
+           ((VolunteerOrganization) organization).getVolunteerList().getVolunteerList().add(vt);
+          
+        }
         organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
         populateData();
         txtName.setText("");

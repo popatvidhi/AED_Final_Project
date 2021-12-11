@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.VolunteerOrganization;
+package UI.EventSeeker;
 
+import UI.VolunteerOrganization.*;
 import UI.CommunityEnterprise.*;
 import UI.EventMaker.*;
 import Business.Ecosystem;
@@ -18,7 +19,7 @@ import javax.swing.JPanel;
  *
  * @author vidhi
  */
-public class VolunteerAdminWorkArea extends javax.swing.JPanel {
+public class EventSeekerAdminWorkArea extends javax.swing.JPanel {
 
     /**
      * Creates new form EventMakerAdminWorkArea
@@ -26,7 +27,7 @@ public class VolunteerAdminWorkArea extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     
-    public VolunteerAdminWorkArea(JPanel userProcessContainer,Enterprise enterprise) {
+    public EventSeekerAdminWorkArea(JPanel userProcessContainer,Enterprise enterprise) {
         initComponents();
         this.enterprise=enterprise;
         this.userProcessContainer=userProcessContainer;
@@ -51,7 +52,6 @@ public class VolunteerAdminWorkArea extends javax.swing.JPanel {
         btnManageEmployee = new javax.swing.JButton();
         btnManageUserAccount = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        btnManageOrganization = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(135, 109, 187));
 
@@ -60,7 +60,7 @@ public class VolunteerAdminWorkArea extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Volunteer Organization");
+        jLabel1.setText("Change Seeket Organization");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -77,7 +77,7 @@ public class VolunteerAdminWorkArea extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Welcome, You're logged in as Volunteer Admin");
+        jLabel2.setText("Welcome, You're logged in as Change Seeker Admin");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Manage", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel3.setOpaque(false);
@@ -102,14 +102,6 @@ public class VolunteerAdminWorkArea extends javax.swing.JPanel {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/EventMaker/career.png"))); // NOI18N
 
-        btnManageOrganization.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnManageOrganization.setText("Organization");
-        btnManageOrganization.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageOrganizationActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -121,7 +113,6 @@ public class VolunteerAdminWorkArea extends javax.swing.JPanel {
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnManageOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnManageUserAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnManageEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(84, 84, 84))
@@ -129,9 +120,7 @@ public class VolunteerAdminWorkArea extends javax.swing.JPanel {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(btnManageOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnManageEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -193,7 +182,7 @@ public class VolunteerAdminWorkArea extends javax.swing.JPanel {
     private void btnManageEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEmployeeActionPerformed
         // TODO add your handling code here:
         ManageEmployee mngEmp = new ManageEmployee(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("ManageEmployee", mngEmp);
+        userProcessContainer.add("SeekerManageEmployee", mngEmp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageEmployeeActionPerformed
@@ -201,23 +190,14 @@ public class VolunteerAdminWorkArea extends javax.swing.JPanel {
     private void btnManageUserAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageUserAccountActionPerformed
         // TODO add your handling code here:
         ManageUserAccount mngUser = new ManageUserAccount(userProcessContainer, enterprise);
-        userProcessContainer.add("ManageUserAccount", mngUser);
+        userProcessContainer.add("SeekerManageUserAccount", mngUser);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageUserAccountActionPerformed
 
-    private void btnManageOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageOrganizationActionPerformed
-        // TODO add your handling code here:
-        ManageOrganization mngOrg = new ManageOrganization(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("ManageOrganization", mngOrg);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnManageOrganizationActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageEmployee;
-    private javax.swing.JButton btnManageOrganization;
     private javax.swing.JButton btnManageUserAccount;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

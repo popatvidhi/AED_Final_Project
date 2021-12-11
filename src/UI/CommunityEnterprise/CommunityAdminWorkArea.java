@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author ymayank97
+ * @author vidhi
  */
 public class CommunityAdminWorkArea extends javax.swing.JPanel {
 

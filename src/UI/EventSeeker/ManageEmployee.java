@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.VolunteerOrganization;
+package UI.EventSeeker;
 
+import UI.VolunteerOrganization.*;
 import UI.SystemAdmin.*;
 import Business.Ecosystem;
 import Business.Employee.Employee;
@@ -13,6 +14,7 @@ import Business.Network.Network;
 import Business.Organization.EventMakerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Organization.VictimOrganization;
 import Business.Organization.VolunteerOrganization;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -57,7 +59,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         comboOrg.removeAllItems();
         
         for (Organization organization : orgdirectory.getOrganizationList()){
-            if(organization instanceof VolunteerOrganization)
+            if(organization instanceof VictimOrganization)
             comboOrg.addItem(organization);
             
         }
@@ -66,7 +68,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         comboOrgSelect.removeAllItems();
         
         for (Organization organization : orgdirectory.getOrganizationList()){
-             if(organization instanceof VolunteerOrganization)
+             if(organization instanceof VictimOrganization)
             comboOrgSelect.addItem(organization);
             
         }

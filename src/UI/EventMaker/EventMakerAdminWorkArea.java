@@ -184,7 +184,7 @@ public class EventMakerAdminWorkArea extends javax.swing.JPanel {
     private void btnManageEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEmployeeActionPerformed
         // TODO add your handling code here:
         ManageEmployee manageEmployeeJPanel = new ManageEmployee(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("GiverManageEmployee", manageEmployeeJPanel);
+        userProcessContainer.add("MakerManageEmployee", manageEmployeeJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -193,7 +193,7 @@ public class EventMakerAdminWorkArea extends javax.swing.JPanel {
     private void btnManageUserAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageUserAccountActionPerformed
         // TODO add your handling code here:
         ManageUserAccount muajp = new ManageUserAccount(userProcessContainer, enterprise);
-        userProcessContainer.add("GiverManageUserAccount", muajp);
+        userProcessContainer.add("MakerManageUserAccount", muajp);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

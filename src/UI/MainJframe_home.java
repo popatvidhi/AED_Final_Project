@@ -186,6 +186,8 @@ public class MainJframe_home extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(sidePane);
 
+        panelWorkArea.setLayout(new java.awt.CardLayout());
+
         jPanel5.setBackground(new java.awt.Color(122, 72, 221));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -202,16 +204,7 @@ public class MainJframe_home extends javax.swing.JFrame {
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout panelWorkAreaLayout = new javax.swing.GroupLayout(panelWorkArea);
-        panelWorkArea.setLayout(panelWorkAreaLayout);
-        panelWorkAreaLayout.setHorizontalGroup(
-            panelWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        panelWorkAreaLayout.setVerticalGroup(
-            panelWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        panelWorkArea.add(jPanel5, "card2");
 
         jSplitPane1.setRightComponent(panelWorkArea);
 

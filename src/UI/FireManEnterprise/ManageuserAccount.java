@@ -10,6 +10,7 @@ import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
+import Business.Role.FireManRole;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -29,7 +30,7 @@ public class ManageuserAccount extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     
-    public ManageuserAccount() {
+    public ManageuserAccount(JPanel userProcessContainer,Enterprise enterprise) {
         initComponents();   
         this.userProcessContainer=userProcessContainer;
         this.enterprise=enterprise;
@@ -296,7 +297,7 @@ public class ManageuserAccount extends javax.swing.JPanel {
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
         if(organization instanceof DoctorOrganization){
-            comboRole.addItem(new DoctorRole());
+            comboRole.addItem(new FireManRole());
         }
         
       

@@ -10,6 +10,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.PoliceOrganization;
 import Business.UserAccount.UserAccount;
+import UI.FireManWorkArea.FireManWorkArea;
 import UI.PoliceWorkArea.PoliceWorkArea;
 import javax.swing.JPanel;
 

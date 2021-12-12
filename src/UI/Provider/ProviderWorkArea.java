@@ -202,6 +202,11 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         jLabel4.setText("Type");
 
         txtReq.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtReq.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtReqKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -212,6 +217,11 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         jLabel3.setText("Quantity");
 
         txtQuantity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtQuantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQuantityKeyTyped(evt);
+            }
+        });
 
         btnCreate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCreate.setText("Create");
@@ -450,6 +460,30 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtReqKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReqKeyTyped
+        // TODO add your handling code here:
+        char typedReq = evt.getKeyChar();
+        if(!Character.isAlphabetic(typedReq) && !Character.isWhitespace(typedReq)){
+            evt.consume();
+        }
+        //Restrict the length to 256 
+        if(txtReq.getText().length() > 255){
+                evt.consume();
+        }
+    }//GEN-LAST:event_txtReqKeyTyped
+
+    private void txtQuantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQuantityKeyTyped
+        // TODO add your handling code here:
+        char typedQnt = evt.getKeyChar();
+        if(!Character.isDigit(typedQnt)){
+            evt.consume();
+        }
+        //Restrict the length to 5 
+        if(txtQuantity.getText().length() > 4){
+                evt.consume();
+        }
+    }//GEN-LAST:event_txtQuantityKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

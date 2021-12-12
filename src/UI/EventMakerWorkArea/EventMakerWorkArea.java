@@ -133,17 +133,25 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         tblEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblEvent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Event Name", "Subject", "Description", "Location", "Date", "Status", "Event Maker", "ID"
+                "Event Name", "Subject", "Description", "Location", "Date", "Status", "Event Maker"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblEvent);
 
         btnView.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -155,7 +163,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         });
 
         btnAssignTo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnAssignTo.setText("Assign To");
+        btnAssignTo.setText("Acknowledge");
         btnAssignTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignToActionPerformed(evt);

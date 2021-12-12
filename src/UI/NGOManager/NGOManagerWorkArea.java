@@ -136,7 +136,6 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblRequests = new javax.swing.JTable();
-        backBtn = new javax.swing.JButton();
         dateChooser = new com.toedter.calendar.JDateChooser();
 
         jPanel1.setBackground(new java.awt.Color(243, 235, 255));
@@ -147,7 +146,6 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         jLabel1.setText("NGO Manager Work Area");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -277,14 +275,6 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tblRequests);
 
-        backBtn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        backBtn.setText("BACK");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -334,9 +324,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap(200, Short.MAX_VALUE)
@@ -349,9 +337,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -369,7 +355,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                             .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(75, 75, 75))))
@@ -479,6 +465,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         txtDesc.setText("");
         txtLocation.setText("");
         dateChooser.setCalendar(null);
+        txtVolunteers.setText("");
         }
         }catch(NumberFormatException e){}
     }//GEN-LAST:event_btnCreateActionPerformed
@@ -515,12 +502,6 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCompleteActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backBtnActionPerformed
-
     private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
         // TODO add your handling code here:
         SupplyRequest sr = new SupplyRequest(userProcessContainer,account,organization, enterprise,system);
@@ -531,7 +512,6 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backBtn;
     private javax.swing.JButton btnAnalysis;
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnComplete;

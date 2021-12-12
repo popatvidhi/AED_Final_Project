@@ -133,6 +133,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         jPanel4.setOpaque(false);
 
         btnAddEmployee.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnAddEmployee.setForeground(new java.awt.Color(153, 0, 153));
         btnAddEmployee.setText("Add Employee");
         btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

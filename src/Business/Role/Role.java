@@ -40,6 +40,7 @@ public abstract class Role {
         FireManAdminRole("FireManAdminRole");
         
         
+        
         private String value;
         private RoleType(String value){
             this.value=value;

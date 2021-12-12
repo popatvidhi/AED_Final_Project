@@ -50,7 +50,6 @@ private ArrayList<Enterprise> enterpriseList;
             enterprise= new FireManEnterprise(name);
             enterpriseList.add(enterprise);
          }
-        
         return enterprise;
         
     }

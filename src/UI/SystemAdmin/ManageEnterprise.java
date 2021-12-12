@@ -59,7 +59,6 @@ public class ManageEnterprise extends javax.swing.JPanel {
                 row[0] = enterprise;
                 row[1] = network.getName();
                 row[2] = enterprise.getEnterpriseType().getValue();
-
                 model.addRow(row);
             }
         }

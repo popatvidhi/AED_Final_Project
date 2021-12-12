@@ -24,7 +24,7 @@ public class ManageOrganization extends javax.swing.JPanel {
     private OrganizationDirectory orgdirectory;
     private JPanel userProcessContainer;
     
-    public ManageOrganization() {
+    public ManageOrganization(JPanel userProcessContainer,OrganizationDirectory orgdirectory) {
         initComponents();   
         this.userProcessContainer=userProcessContainer;
         this.orgdirectory=orgdirectory;

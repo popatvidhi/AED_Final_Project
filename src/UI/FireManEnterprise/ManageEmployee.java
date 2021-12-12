@@ -6,6 +6,7 @@
 package UI.FireManEnterprise;
 
 import Business.Employee.Employee;
+import Business.Organization.FireManOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
@@ -24,7 +25,7 @@ public class ManageEmployee extends javax.swing.JPanel {
      */
      private OrganizationDirectory orgdirectory;
     private JPanel userProcessContainer;
-    public ManageEmployee() {
+    public ManageEmployee(JPanel userProcessContainer,OrganizationDirectory orgdirectory) {
         initComponents();   
         this.userProcessContainer=userProcessContainer;
         this.orgdirectory=orgdirectory;
@@ -51,7 +52,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         comboOrg.removeAllItems();
         
         for (Organization organization : orgdirectory.getOrganizationList()){
-            if(organization instanceof DoctorOrganization)
+            if(organization instanceof FireManOrganization)
             comboOrg.addItem(organization);
         }
     }
@@ -59,7 +60,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         comboOrgSelect.removeAllItems();
 
         for (Organization organization : orgdirectory.getOrganizationList()){
-            if((organization instanceof DoctorOrganization))
+            if((organization instanceof FireManOrganization))
             comboOrgSelect.addItem(organization);
         }
     }

@@ -36,7 +36,7 @@ public abstract class Role {
         PoliceAdminRole("PoliceAdminRole"),
         DoctorAdminRole("DoctorAdminRole"),
         Doctor("Doctor"),
-        FireMan("FireMan"),
+        FireManRole("FireManRole"),
         FireManAdminRole("FireManAdminRole");
         
         

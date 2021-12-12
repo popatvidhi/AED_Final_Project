@@ -9,7 +9,7 @@ import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import UI.PoliceEnterprise.PoliceAdminWorkArea;
+import UI.FireManEnterprise.FireManAdminWorkArea;
 import javax.swing.JPanel;
 
 /**

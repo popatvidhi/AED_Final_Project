@@ -5,7 +5,7 @@
  */
 package UI.FireManEnterprise;
 
-import UI.CommunityEnterprise.*;
+import UI.FireManEnterprise.*;
 import UI.EventMaker.*;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
@@ -26,7 +26,7 @@ public class FireManAdminWorkArea extends javax.swing.JPanel {
     private Ecosystem system;
     private Enterprise enterprise;
     
-    public FireManAdminWorkArea() {
+    public FireManAdminWorkArea(JPanel userProcessContainer,Enterprise enterprise, Ecosystem ecosystem) {
         initComponents();
         this.enterprise=enterprise;
         this.userProcessContainer=userProcessContainer;

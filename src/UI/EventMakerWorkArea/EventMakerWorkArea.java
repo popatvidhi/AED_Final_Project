@@ -255,6 +255,11 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
 
         btnFire.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnFire.setText("Fire Department");
+        btnFire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFireActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -441,18 +446,35 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblEvent.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please request to forward to the Lawyer", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please request to forward to the Police", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equals("Assigned to the Police")){
-                JOptionPane.showMessageDialog(null, "This request is already assigned to Lawyer", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "This request is already assigned to Police", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-            JOptionPane.showMessageDialog(null, "Assigned to the Lawyer", "Warning", JOptionPane.WARNING_MESSAGE);
-            cswr.setStatus("Assigned To Lawyer");
+            JOptionPane.showMessageDialog(null, "Assigned to the Police", "Warning", JOptionPane.WARNING_MESSAGE);
+            cswr.setStatus("Assigned To Police");
             populateTableWorkQueue();
             
         }
     }//GEN-LAST:event_btnPoliceActionPerformed
+
+    private void btnFireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFireActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblEvent.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please request to forward to the FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            if(cswr.getStatus().equals("Assigned to the FireMan")){
+                JOptionPane.showMessageDialog(null, "This request is already assigned to FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+            JOptionPane.showMessageDialog(null, "Assigned to the FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
+            cswr.setStatus("Assigned To FireMan");
+            populateTableWorkQueue();
+            
+        }
+    }//GEN-LAST:event_btnFireActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

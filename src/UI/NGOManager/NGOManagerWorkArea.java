@@ -5,19 +5,103 @@
  */
 package UI.NGOManager;
 
+import Business.Ecosystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.NGOWorkRequest;
+import Business.WorkQueue.VictimWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 /**
  *
  * @author ymayank97
  */
-public class ManagerWorkArea extends javax.swing.JPanel {
+public class NGOManagerWorkArea extends javax.swing.JPanel {
 
     /**
      * Creates new form ManagerWorkArea
      */
-    public ManagerWorkArea() {
+    private JPanel userProcessContainer;
+    private UserAccount account;
+    private Organization organization;
+    private Enterprise enterprise;
+    private Ecosystem system;
+    private Date d;
+    private SimpleDateFormat s;
+    public NGOManagerWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.account=account;
+        this.organization=organization;
+        this.enterprise=enterprise;
+        this.system=system;
+        d = new Date();
+        s = new SimpleDateFormat("MM/dd/YY");
+        populateTableEvent();
+        populateTableWorkQueue();
     }
 
+    public void populateTableEvent()
+    {
+         DefaultTableModel model = (DefaultTableModel) tblNgoEvents.getModel();
+        
+        model.setRowCount(0);
+        
+        
+        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
+           if(work instanceof NGOWorkRequest){ 
+            Object[] row = new Object[10];
+            row[0] = work;
+            row[1] = ((NGOWorkRequest) work).getDescription();
+            row[2] =  work.getRequestDate();
+            row[3] = ((NGOWorkRequest) work).getLocation();
+            row[4] = ((NGOWorkRequest) work).getvRequired();
+            row[5] = ((NGOWorkRequest) work).getvAcquired();
+            
+            model.addRow(row);
+           }
+        }
+    }
+    
+    public void populateTableWorkQueue(){
+         DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
+        
+        model.setRowCount(0);
+        
+        
+        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
+           if(work instanceof VictimWorkRequest){
+               if((work.getStatus().equalsIgnoreCase("Assigned To NGO"))||(work.getStatus().equalsIgnoreCase("NGO ASSIGNED the Request"))){
+                   
+               
+            Object[] row = new Object[10];
+            row[0] = work.getSender().getEmployee().getName();
+            row[1] = work.getSubject();
+            row[2] = ((VictimWorkRequest) work).getDescription();
+            row[3] = ((VictimWorkRequest) work).getLocation();
+            row[4] = work.getRequestDate();
+            row[5] = work;
+            row[6] = work.getReciever();
+            
+            model.addRow(row);
+           }
+        }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -217,38 +301,35 @@ public class ManagerWorkArea extends javax.swing.JPanel {
                                 .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(205, 205, 205))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtLocation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(42, 42, 42)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtLocation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(42, 42, 42)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(294, 294, 294)
-                                                .addComponent(btnCreate))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel7)
-                                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(28, 28, 28)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(txtVolunteers, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                                    .addComponent(dateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                                    .addComponent(jLabel8)
+                                        .addGap(294, 294, 294)
+                                        .addComponent(btnCreate))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(86, 86, 86)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(28, 28, 28)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(btnRequest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnAnalysis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addComponent(txtVolunteers, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                                            .addComponent(dateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(jLabel8)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(86, 86, 86)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnRequest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnAnalysis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -339,32 +420,24 @@ public class ManagerWorkArea extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
-        
-    }//GEN-LAST:event_btnRequestActionPerformed
-
     private void btnAnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalysisActionPerformed
-        /*        VolunteerList vl= new VolunteerList(userProcessContainer,account,organization, enterprise,system);
-        userProcessContainer.add("VolunteerList", vl);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);*/
         DefaultCategoryDataset d = new DefaultCategoryDataset();
 
         for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-            if(work instanceof NGOWorkRequest)
-            {
-
-                d.setValue(((NGOWorkRequest) work).getvAcquired(),"Event List",((NGOWorkRequest) work).getTitle());
-
-            }
+           if(work instanceof NGOWorkRequest)
+           {
+            
+               d.setValue(((NGOWorkRequest) work).getvAcquired(),"Event List",((NGOWorkRequest) work).getTitle());
+             
         }
-
-        JFreeChart chart = ChartFactory.createBarChart("Volunteers Acquired", "Event Name", "Volunteers Participated", d, PlotOrientation.VERTICAL, false, true, false);
-        CategoryPlot p = chart.getCategoryPlot();
-        p.setRangeGridlinePaint(Color.black);
-        ChartFrame f = new ChartFrame("Volunteer Analysis",chart);
-        f.setVisible(true);
-        f.setSize(500,400);
+        }
+           
+           JFreeChart chart = ChartFactory.createBarChart("Volunteers Acquired", "Event Name", "Volunteers Participated", d, PlotOrientation.VERTICAL, false, true, false);
+           CategoryPlot p = chart.getCategoryPlot();
+           p.setRangeGridlinePaint(Color.black);
+           ChartFrame f = new ChartFrame("Volunteer Analysis",chart);
+           f.setVisible(true);
+           f.setSize(500,400);
     }//GEN-LAST:event_btnAnalysisActionPerformed
 
     private void txtLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocationActionPerformed
@@ -372,44 +445,41 @@ public class ManagerWorkArea extends javax.swing.JPanel {
     }//GEN-LAST:event_txtLocationActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        try{
-            if(txtTitle.getText().isEmpty() || txtDesc.getText().isEmpty() || txtLocation.getText().isEmpty() || txtVolunteers.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null,"Text Field Cannot be Empty");
-            }else{
+       try{
+        if(txtTitle.getText().isEmpty() || txtDesc.getText().isEmpty() || txtLocation.getText().isEmpty() || txtVolunteers.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Text Field Cannot be Empty");
+        }else{
 
-                String event = txtTitle.getText();
-                String desp = txtDesc.getText();
-                String location = txtLocation.getText();
-                Date date = txtDate.getDate();
-                int req = Integer.parseInt(txtVolunteers.getText());
+        String event = txtTitle.getText();
+        String desp = txtDesc.getText();
+        String location = txtLocation.getText();
+        Date date = dateChooser.getDate();
+        int req = Integer.parseInt(txtVolunteers.getText());
+        
+        if(event.equals("") || event.isEmpty() && desp.equals("") || desp.isEmpty() && location.equals("")|| location.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid request");
+            return;
+        }
+        
+        NGOWorkRequest reqst = new NGOWorkRequest();
+        reqst.setTitle(event);
+        reqst.setDescription(desp);
+        reqst.setLocation(location);
+        reqst.setvRequired(req);
+        reqst.setRequestDate(date);
 
-                if(event.equals("") || event.isEmpty() && desp.equals("") || desp.isEmpty() && location.equals("")|| location.isEmpty())
-                {
-                    JOptionPane.showMessageDialog(null, "Please enter valid request");
-                    return;
-                }
-
-                NGOWorkRequest request = new NGOWorkRequest();
-                request.setTitle(event);
-                request.setDescription(desp);
-                request.setLocation(location);
-                request.setvRequired(req);
-                //  request.setvAcquired(req);
-                request.setRequestDate(date);
-
-                //request.setStatus("Requested");request.setSender(account);
-                organization.getWorkQueue().getWorkRequestList().add(request);
-                account.getWorkQueue().getWorkRequestList().add(request);
-                system.getWorkQueue().getWorkRequestList().add(request);
-                populateEventTable();
-
-                txtTitle.setText("");
-                txtDesc.setText("");
-                txtLocation.setText("");
-                txtDate.setCalendar(null);
-            }
+        organization.getWorkQueue().getWorkRequestList().add(reqst);
+        account.getWorkQueue().getWorkRequestList().add(reqst);
+        system.getWorkQueue().getWorkRequestList().add(reqst);
+        populateTableEvent();
+        
+        txtTitle.setText("");
+        txtDesc.setText("");
+        txtLocation.setText("");
+        dateChooser.setCalendar(null);
+        }
         }catch(NumberFormatException e){}
-
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -418,12 +488,12 @@ public class ManagerWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            ChangeSeekerWorkRequest cswr = (ChangeSeekerWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
 
             cswr.setStatus("NGO ASSIGNED the Request");
             cswr.setReciever(account);
 
-            populateWorkQueueTable();
+            populateTableWorkQueue();
 
         }
     }//GEN-LAST:event_btnAssignActionPerformed
@@ -434,45 +504,29 @@ public class ManagerWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            ChangeSeekerWorkRequest p = (ChangeSeekerWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
 
-            /* if (p.getReciever() != null) {
-                if (p.getStatus().equals("Pending")) {
-                    UserAccount a = p.getSender();
-                    if (s.getVaccineList().getVaccineList().size() <= 0) {
-                        JOptionPane.showMessageDialog(null, "No Stock available. Request from Supplier");
-                        return;
-                    }
-                    for (Vaccine v : s.getVaccineList().getVaccineList()) {
-                        if (p.getVaccine().getVaccineName().equals(v.getVaccineName())) {
-                            if (v.getQuantity() - p.getQuantity() < 0) {
-                                JOptionPane.showMessageDialog(null, "No enough Vaccines for supply. Wait for sometime");
-                                return;
-                            }
-                            v.setQuantity(v.getQuantity() - p.getQuantity());
-                        } else {
-                            JOptionPane.showMessageDialog(null, "No Stock available. Request from Supplier.");
-                        }
-                    }*/
                     p.setStatus("Complete");
                     p.setReciever(account);
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
-                    populateWorkQueueTable();
-                    /*populateAvailable();
-                } else {
-                    JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Please assign first");
-            }
+                    populateTableWorkQueue();
 
-            */
-        }   // TODO add your handling code here:
+        }
     }//GEN-LAST:event_btnCompleteActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
+        // TODO add your handling code here:
+        SupplyRequest sr = new SupplyRequest(userProcessContainer,account,organization, enterprise,system);
+        userProcessContainer.add("ManageEmployee", sr);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnRequestActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

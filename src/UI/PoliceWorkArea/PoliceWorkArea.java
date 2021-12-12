@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.DoctorWorkArea;
+package UI.PoliceWorkArea;
 
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
+import Business.Organization.PoliceOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.VictimWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -20,18 +20,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ymayank97
  */
-public class DoctorWorkArea extends javax.swing.JPanel {
+public class PoliceWorkArea extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private UserAccount account;
     private Organization organization;
     private Enterprise enterprise;
     private Ecosystem system;
-    DoctorOrganization doctorOrganization;
-
+    PoliceOrganization policeOrganization;
     /**
-     * Creates new form DoctorWorkArea
+     * Creates new form PoliceWorkArea
      */
-    public DoctorWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
+    public PoliceWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
@@ -39,10 +38,11 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.system=system;
         
-         populateDoctorTable();
-        
+         populatePoliceTable();
     }
-       public void populateDoctorTable(){
+
+    
+    public void populatePoliceTable(){
 
          DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
         
@@ -51,7 +51,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         
         for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
            if(work instanceof VictimWorkRequest){
-               if((work.getStatus().equalsIgnoreCase("Assigned To Doctor"))||(work.getStatus().equalsIgnoreCase("Doctor assigned the Request"))){
+               if((work.getStatus().equalsIgnoreCase("Assigned To Police"))||(work.getStatus().equalsIgnoreCase("Police assigned the Request"))){
                    
                
             Object[] row = new Object[10];
@@ -68,8 +68,6 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         }
         }
     }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,7 +93,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Doctor Work Area");
+        jLabel1.setText("Police Work Area");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -162,43 +160,45 @@ public class DoctorWorkArea extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(1013, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(0, 113, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(118, 118, 118)
+                .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(235, 235, 235))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBack)
-                .addGap(7, 7, 7)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBack))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1700, Short.MAX_VALUE)
+            .addGap(0, 1092, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -207,7 +207,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 559, Short.MAX_VALUE)
+            .addGap(0, 547, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -215,6 +215,23 @@ public class DoctorWorkArea extends javax.swing.JPanel {
                     .addContainerGap()))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+         int selectedRow = tblRequests.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+
+            p.setStatus("Complete");
+            p.setReciever(account);
+            JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+            populatePoliceTable();
+
+        } 
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
@@ -225,32 +242,13 @@ public class DoctorWorkArea extends javax.swing.JPanel {
 
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
 
-            cswr.setStatus("Doctor ASSIGNED the Request");
+            cswr.setStatus("Police assigned the Request");
             cswr.setReciever(account);
 
-            populateDoctorTable();
+            populatePoliceTable();
 
         }
-       
     }//GEN-LAST:event_btnAssignActionPerformed
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblRequests.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-
-            VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
-
-            p.setStatus("Complete");
-            p.setReciever(account);
-            JOptionPane.showMessageDialog(null, "You have successfully completed the request");
-            populateDoctorTable();
-
-        } 
-        
-    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
         // TODO add your handling code here:
@@ -264,7 +262,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
             p.setStatus("Complete");
             p.setReciever(account);
             JOptionPane.showMessageDialog(null, "You have successfully completed the request");
-            populateDoctorTable();
+            populatePoliceTable();
 
         }  
     }//GEN-LAST:event_btnCompleteActionPerformed

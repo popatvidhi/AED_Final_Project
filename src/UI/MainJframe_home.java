@@ -114,7 +114,7 @@ public class MainJframe_home extends javax.swing.JFrame {
 
         btnLogout.setBackground(new java.awt.Color(195, 195, 195));
         btnLogout.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnLogout.setIcon(new javax.swing.ImageIcon("C:\\Users\\ymaya\\Downloads\\logout (1).png")); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/logout (1).png"))); // NOI18N
         btnLogout.setBorderPainted(false);
         btnLogout.setContentAreaFilled(false);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {

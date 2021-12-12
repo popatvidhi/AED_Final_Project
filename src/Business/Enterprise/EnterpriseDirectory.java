@@ -23,7 +23,7 @@ private ArrayList<Enterprise> enterpriseList;
     public ArrayList<Enterprise> getEnterpriseList() {
         return enterpriseList;
     }
-    
+    //Creaye and add new enterprises
     public Enterprise createAndAddEnterprise(String name, Enterprise.EnterpriseType type){
         Enterprise enterprise = null;
         if(type == Enterprise.EnterpriseType.Community){

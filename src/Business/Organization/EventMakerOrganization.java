@@ -17,7 +17,7 @@ import java.util.HashSet;
 public class EventMakerOrganization extends Organization {
     
     EventMakerDirectory eventmakerlist;
-    
+    //constructor to add event maker list to Event Maker directory
     public EventMakerOrganization()
     {
         super(Organization.Type.EventMaker.getValue());
@@ -32,7 +32,7 @@ public class EventMakerOrganization extends Organization {
         this.eventmakerlist = eventmakerlist;
     }
     
-    
+    //hash map to support event maker role
     @Override
     public HashSet<Role> getSupportedRole(){
        role.add(new EventMakerRole());

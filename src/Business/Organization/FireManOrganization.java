@@ -6,9 +6,7 @@
 package Business.Organization;
 
 import Business.FireMan.FireManDirectory;
-import Business.Police.PoliceDirectory;
 import Business.Role.FireManRole;
-import Business.Role.PoliceRole;
 import Business.Role.Role;
 import java.util.HashSet;
 
@@ -18,7 +16,7 @@ import java.util.HashSet;
  */
 public class FireManOrganization extends Organization{
     FireManDirectory fireManlist;
-    
+    //constructor to add fireman list to fireman directory
     public FireManOrganization(String name)
     {
         super(Organization.Type.FireMan.getValue());
@@ -33,7 +31,7 @@ public class FireManOrganization extends Organization{
     public void setFireManlist(FireManDirectory fireManlist) {
         this.fireManlist = fireManlist;
     }
- 
+    //hasmap to support fire man role
     @Override
     public HashSet<Role> getSupportedRole(){
        role.add(new FireManRole());

@@ -13,29 +13,30 @@ import Business.WorkQueue.WorkQueue;
  */
 public class FireMan {
     private String Name;
-    private static int Count=0;
+    private static int Count=1;
     private String FireManId;
     private WorkQueue workQueue;
-       public FireMan() {
+    //Fire man constructor which automatically generates id
+    public FireMan() {
         
         FireManId = "FireMan"+(++Count);
         workQueue= new WorkQueue();
     }
-       
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String Name) {
-        this.Name = Name;
-    }
-
+    
     public static int getCount() {
         return Count;
     }
 
     public static void setCount(int Count) {
         FireMan.Count = Count;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getFireManId() {

@@ -25,9 +25,9 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private int organizationCode;
-    private static int count=0;
+    private static int count=1;
     public HashSet<Role> role;
-    
+    //enums for types of organization
     public enum Type {
         Victim("Victim Organization"),
         EventMaker("EventMaker Organization"),
@@ -46,7 +46,7 @@ public abstract class Organization {
             return value;
         }
     }
-    
+    //constructor to update work queues, employee directory and user account
     public Organization (String name)
     {
       this.name = name;
@@ -69,13 +69,6 @@ public abstract class Organization {
     
     public abstract HashSet<Role> getSupportedRole();
 
-    public EmployeeDirectory getEmployeeDirectory() {
-        return employeeDirectory;
-    }
-
-    public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
-        this.employeeDirectory = employeeDirectory;
-    }
 
     public void setUserAccountDirectory(UserAccountDirectory userAccountDirectory) {
         this.userAccountDirectory = userAccountDirectory;
@@ -85,19 +78,19 @@ public abstract class Organization {
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;
     }
+    
+     public EmployeeDirectory getEmployeeDirectory() {
+        return employeeDirectory;
+    }
 
+    public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
+        this.employeeDirectory = employeeDirectory;
+    }
+    
     public int getOrganizationCode() {
         return organizationCode;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    
     public WorkQueue getWorkQueue() {
         return workQueue;
     }
@@ -105,10 +98,14 @@ public abstract class Organization {
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
     }
+    
+    public String getName() {
+        return name;
+    }
 
-    
-    
-    
+    public void setName(String name) {
+        this.name = name;
+    }
     
     @Override
     public String toString()

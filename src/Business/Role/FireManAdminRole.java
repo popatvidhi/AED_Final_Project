@@ -17,6 +17,7 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public class FireManAdminRole extends Role{
+    //overriding main panel with fireman admin work area whenever fireman admin role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
         return new FireManAdminWorkArea(userProcessContainer,enterprise,system);

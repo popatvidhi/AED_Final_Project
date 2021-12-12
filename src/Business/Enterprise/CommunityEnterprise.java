@@ -7,11 +7,9 @@ package Business.Enterprise;
 
 import Business.Role.EventMakerAdminRole;
 import Business.Role.Role;
-import Business.Role.VictimAdminRole;
 import Business.Role.VolunteerAdminRole;
 import java.util.HashSet;
 import Business.Role.VictimAdminRole;
-import Business.Role.CommunityAdminRole;
 
 /**
  *
@@ -21,7 +19,7 @@ public class CommunityEnterprise extends Enterprise{
     public CommunityEnterprise(String name){
         super(name,Enterprise.EnterpriseType.Community);
     }
-    
+    //Hash map to add rolesss
     @Override
     public HashSet<Role> getSupportedRole(){
        

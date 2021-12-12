@@ -12,8 +12,9 @@ package Business.Hospital;
 public class Hospital {
     private String Dname;
     private String Did;
-    private static int count;
-
+    private static int count=1;
+    
+    //Hospital constructor to generate id automatically
     public Hospital() {
         
         

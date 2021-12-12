@@ -16,7 +16,7 @@ import java.util.HashSet;
  */
 public class DoctorOrganization extends Organization{
     HospitalDirectory doctorList;
-    
+    //constructor to add doctor list to hospital directory
     public DoctorOrganization()
     {
         super(Organization.Type.Doctor.getValue());
@@ -31,7 +31,7 @@ public class DoctorOrganization extends Organization{
         this.doctorList = doctorList;
     }
     
-    
+    //hashmap to support doctor role
     @Override
     public HashSet<Role> getSupportedRole(){
         role.add(new DoctorRole());

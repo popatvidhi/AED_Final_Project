@@ -27,13 +27,13 @@ public class FireManDirectory {
         this.fireManList = fireManList;
     }
     
-    
+    //add new fire man
     public FireMan addFireMan(){
         FireMan l= new FireMan();
         fireManList.add(l);
         return l;
     }
-    
+    //remove a fire man
     public void removeFireMan(FireMan l){
         fireManList.remove(l);
     }

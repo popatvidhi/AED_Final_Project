@@ -16,7 +16,7 @@ import java.util.HashSet;
  */
 public class NGOOrganization extends Organization{
     NGODirectory ngolist;
-    
+    //constructor to add NGO list to NGO directory
     public NGOOrganization()
     {
         super(Organization.Type.NGO.getValue());
@@ -30,7 +30,7 @@ public class NGOOrganization extends Organization{
     public void setNgolist(NGODirectory ngolist) {
         this.ngolist = ngolist;
     }
-   
+    //hashmap to support NGO role
     @Override
     public HashSet<Role> getSupportedRole(){
        role.add(new NGOManagerRole());

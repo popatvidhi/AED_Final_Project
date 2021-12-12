@@ -13,12 +13,12 @@ import Business.WorkQueue.WorkQueue;
  */
 public class Provider {
     private String sName;
-    private static int sCount=0;
+    private static int sCount=1;
     private String supplierId;
     private WorkQueue workQueue;
     private ItemDirectory itemDirectory;
     private Item item;
-
+    //provider class constructor to update ids, work queue and item directory
     public Provider() {
         
         supplierId = "SUP"+(++sCount);
@@ -26,7 +26,15 @@ public class Provider {
         itemDirectory = new ItemDirectory();
         item = new Item();
     }
+    
+    public Item getItem() {
+        return item;
+    }
 
+    public void setItem(Item item) {
+        this.item = item;
+    }
+    
     public ItemDirectory getItemDirectory() {
         return itemDirectory;
     }
@@ -35,14 +43,6 @@ public class Provider {
         this.itemDirectory = itemDirectory;
     }
 
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
-  
     public String getsName() {
         return sName;
     }
@@ -50,15 +50,7 @@ public class Provider {
     public void setsName(String sName) {
         this.sName = sName;
     }
-
-    public String getSupplierId() {
-        return supplierId;
-    }
-
-    public void setSupplierId(String supplierId) {
-        this.supplierId = supplierId;
-    }
-
+    
     public WorkQueue getWorkQueue() {
         return workQueue;
     }
@@ -67,6 +59,14 @@ public class Provider {
         this.workQueue = workQueue;
     }
     
+    public String getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(String supplierId) {
+        this.supplierId = supplierId;
+    }
+
     @Override
     public String toString(){
         return sName;

@@ -16,11 +16,11 @@ public class Victim {
     private String id;
     private WorkQueue workqueue;
     
-    private static int count;
-    
+    private static int count=1;
+    //victim class constructor to autogenerate id
      public Victim(){
          
-        id= "CS"+(++count);
+        id= "Victim"+(++count);
     }
 
     public WorkQueue getWorkqueue() {

@@ -18,6 +18,7 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public class DoctorRole extends Role{
+    //overriding main panel with doctore work area whenever doctor role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
         return new DoctorWorkArea(userProcessContainer,account,(DoctorOrganization)organization,enterprise,system);

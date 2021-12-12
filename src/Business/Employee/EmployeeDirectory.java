@@ -21,7 +21,7 @@ public class EmployeeDirectory {
     public ArrayList<Employee> getEmployeeList() {
         return employeeList;
     }
-    
+    //create a new employee using this method
     public Employee createEmployee(String name){
         Employee e= new Employee();
         e.setName(name);

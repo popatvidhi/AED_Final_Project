@@ -11,6 +11,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Role.CommunityAdminRole;
 import Business.Role.DoctorAdminRole;
+import Business.Role.FireManAdminRole;
 import Business.Role.NGOAdminRole;
 import Business.Role.PoliceAdminRole;
 import Business.Role.ProviderAdminRole;
@@ -354,6 +355,8 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new PoliceAdminRole());
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DoctorAdminRole());
+            }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.FireMan) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new FireManAdminRole());
             }
 
             populateTableEnterpriseAdmin();

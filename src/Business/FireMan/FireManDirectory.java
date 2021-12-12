@@ -5,7 +5,6 @@
  */
 package Business.FireMan;
 
-import Business.Police.*;
 import java.util.ArrayList;
 
 /**
@@ -29,13 +28,13 @@ public class FireManDirectory {
     }
     
     
-        public FireMan addFireMan(){
+    public FireMan addFireMan(){
         FireMan l= new FireMan();
         fireManList.add(l);
         return l;
     }
     
-    public void removePolice(FireMan l){
+    public void removeFireMan(FireMan l){
         fireManList.remove(l);
     }
 }

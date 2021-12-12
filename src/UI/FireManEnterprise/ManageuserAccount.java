@@ -279,8 +279,9 @@ public class ManageuserAccount extends javax.swing.JPanel {
     
     public void populateComboOrganization() {
         comboOrg.removeAllItems();
-
+        System.out.println("Combo Organization");
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            System.out.println(organization);
             comboOrg.addItem(organization);
         }
     }
@@ -305,7 +306,7 @@ public class ManageuserAccount extends javax.swing.JPanel {
     
     public void populateData() {
 
-        DefaultTableModel model = (DefaultTableModel) tblUser.getModel();
+       DefaultTableModel model = (DefaultTableModel) tblUser.getModel();
 
         model.setRowCount(0);
 

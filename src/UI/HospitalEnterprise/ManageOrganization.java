@@ -5,15 +5,10 @@
  */
 package UI.HospitalEnterprise;
 
-import UI.CommunityEnterprise.*;
-import UI.SystemAdmin.*;
-import Business.Ecosystem;
-import Business.Enterprise.Enterprise;
-import Business.Network.Network;
+
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;

@@ -8,8 +8,8 @@ package UI.FireManWorkArea;
 
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
+import Business.Organization.FireManOrganization;
 import Business.Organization.Organization;
-import Business.Organization.PoliceOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.FireManWorkRequest;
 import Business.WorkQueue.VictimWorkRequest;
@@ -28,7 +28,7 @@ public class FireManWorkArea extends javax.swing.JPanel {
     private Organization organization;
     private Enterprise enterprise;
     private Ecosystem system;
-    PoliceOrganization policeOrganization;
+    FireManOrganization firemanOrganization;
     /**
      * Creates new form PoliceWorkArea
      */
@@ -95,7 +95,7 @@ public class FireManWorkArea extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Police Work Area");
+        jLabel1.setText("FireMan Work Area");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

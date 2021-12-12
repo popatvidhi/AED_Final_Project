@@ -5,27 +5,16 @@
  */
 package UI.HospitalEnterprise;
 
-import UI.CommunityEnterprise.*;
-import UI.SystemAdmin.*;
+
 import Business.Ecosystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
-import Business.EventMaker.EventMaker;
-import Business.Network.Network;
 import Business.Organization.DoctorOrganization;
-import Business.Organization.EventMakerOrganization;
 import Business.Organization.Organization;
-import Business.Organization.VictimOrganization;
-import Business.Organization.VolunteerOrganization;
 import Business.Role.DoctorRole;
-import Business.Role.EventMakerAdminRole;
-import Business.Role.EventMakerRole;
 import Business.Role.Role;
-import Business.Role.VictimAdminRole;
-import Business.Role.VolunteerAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;

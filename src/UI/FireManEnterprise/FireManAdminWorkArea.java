@@ -5,8 +5,7 @@
  */
 package UI.FireManEnterprise;
 
-import UI.FireManEnterprise.*;
-import UI.EventMaker.*;
+
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import java.awt.CardLayout;
@@ -209,7 +208,7 @@ public class FireManAdminWorkArea extends javax.swing.JPanel {
 
     private void btnManageUserAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageUserAccountActionPerformed
         // TODO add your handling code here:
-        ManageUserAccount mngUser = new ManageUserAccount(userProcessContainer, enterprise);
+        ManageuserAccount mngUser = new ManageuserAccount(userProcessContainer, enterprise);
         userProcessContainer.add("ManageUserAccount", mngUser);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

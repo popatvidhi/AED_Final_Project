@@ -7,11 +7,10 @@ package Business.Role;
 
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
+import Business.Organization.FireManOrganization;
 import Business.Organization.Organization;
-import Business.Organization.PoliceOrganization;
 import Business.UserAccount.UserAccount;
 import UI.FireManWorkArea.FireManWorkArea;
-import UI.PoliceWorkArea.PoliceWorkArea;
 import javax.swing.JPanel;
 
 /**
@@ -21,7 +20,7 @@ import javax.swing.JPanel;
 public class FireManRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
-        return new FireManWorkArea(userProcessContainer,account,(PoliceOrganization)organization,enterprise,system);
+        return new FireManWorkArea(userProcessContainer,account,(FireManOrganization)organization,enterprise,system);
     }
         @Override
         public String toString()

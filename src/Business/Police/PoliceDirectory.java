@@ -28,7 +28,7 @@ public class PoliceDirectory {
     }
     
     
-        public Police addPolice(){
+    public Police addPolice(){
         Police l= new Police();
         policeList.add(l);
         return l;

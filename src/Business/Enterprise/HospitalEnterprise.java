@@ -17,7 +17,7 @@ public class HospitalEnterprise extends Enterprise{
     public HospitalEnterprise(String name){
         super(name,Enterprise.EnterpriseType.Hospital);
     }
-    
+    //hash map to for Doctor role addition
     @Override
     public HashSet<Role> getSupportedRole(){
        

@@ -18,6 +18,7 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public class VictimRole extends Role{
+    //overriding main panel with victim work area whenever victim role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
         return new EventSeekerWorkArea(userProcessContainer,account,(VictimOrganization)organization,enterprise,system);

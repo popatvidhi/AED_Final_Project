@@ -16,8 +16,8 @@ public class EventMaker {
     private String id;
     private WorkQueue workQueue;
     
-    private static int count;
-    
+    private static int count=1;
+    //Event maker class constructor
      public EventMaker(){
          
         id= "EM"+(++count);
@@ -31,7 +31,14 @@ public class EventMaker {
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
     }
+    
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
      
     public String getName() {
         return name;
@@ -41,14 +48,6 @@ public class EventMaker {
         this.name = name;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-     
      @Override
      public String toString(){
          return name;

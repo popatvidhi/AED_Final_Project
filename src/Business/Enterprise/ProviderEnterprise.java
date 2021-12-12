@@ -18,6 +18,7 @@ public class ProviderEnterprise extends Enterprise{
         super(name, Enterprise.EnterpriseType.Provider);
         
     } 
+    //hash map to for Provider role addition
     @Override
     public HashSet<Role> getSupportedRole(){
         new ProviderManagerRole();

@@ -17,6 +17,7 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public class CommunityAdminRole extends Role{
+    //overriding main panel with community admin work area whenever community admin role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
         return new CommunityAdminWorkArea(userProcessContainer,enterprise,system);

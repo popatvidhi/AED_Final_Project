@@ -27,13 +27,13 @@ public class ProviderDirectory {
     public void setProviderList(ArrayList<Provider> providerList) {
         this.providerList = providerList;
     }
-    
+    //add a new provider
     public Provider addSupplier(){
         Provider s= new Provider();
         providerList.add(s);
         return s;
     }
-    
+    //remove a provider
     public void removeSupplier(Provider s){
         providerList.remove(s);
     }

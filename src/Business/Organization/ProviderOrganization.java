@@ -16,8 +16,7 @@ import java.util.HashSet;
  */
 public class ProviderOrganization extends Organization{
     ProviderDirectory providerList;
-
-    //Supplier supplier;
+    //constructor to add provider list to provider directory
     public ProviderOrganization(String name) {
         super(Organization.Type.Provider.getValue());
         providerList= new ProviderDirectory();
@@ -31,7 +30,7 @@ public class ProviderOrganization extends Organization{
     public void setProviderList(ProviderDirectory providerList) {
         this.providerList = providerList;
     }
-    
+    //hashmap to support provider list
     @Override
     public HashSet<Role> getSupportedRole(){
        

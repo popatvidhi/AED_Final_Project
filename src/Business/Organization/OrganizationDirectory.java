@@ -23,7 +23,7 @@ public class OrganizationDirectory {
     public ArrayList<Organization> getOrganizationList() {
         return organizationList;
     }
-    
+    //creates new organizations and adds them to directory
     public Organization createOrganization(Organization.Type type,String name)
     {
     Organization organization = null;

@@ -17,6 +17,7 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public class NGOAdminRole extends Role{
+    //overriding main panel with NGO admin work area whenever NGO admin role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
         return new NGOAdminWorkArea(userProcessContainer,enterprise,system);

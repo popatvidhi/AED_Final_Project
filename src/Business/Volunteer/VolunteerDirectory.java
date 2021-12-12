@@ -26,14 +26,14 @@ public class VolunteerDirectory {
     public void setVolunteerList(ArrayList<Volunteer> volunteerList) {
         this.volunteerList = volunteerList;
     }
-    
+    //add a new volunteer
     public Volunteer addVolunteer(){
     
         Volunteer v = new Volunteer();
         volunteerList.add(v);
         return v;
     }
-    
+    //remove a volunteer
     public void removeVolunteer(Volunteer v){
         volunteerList.remove(v);
     }

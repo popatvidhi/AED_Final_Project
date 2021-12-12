@@ -17,7 +17,7 @@ public class NGOEnterprise extends Enterprise {
     public NGOEnterprise(String name){
         super(name,Enterprise.EnterpriseType.NGO);
     }
-    
+    //hash map to for NGO role addition
     @Override
     public HashSet<Role> getSupportedRole(){
         role.add(new NGOManagerRole());

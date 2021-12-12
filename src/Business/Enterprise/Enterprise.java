@@ -23,7 +23,7 @@ public abstract class Enterprise extends Organization {
       this.enterpriseType= type;
       organizationDirectory = new OrganizationDirectory();
     }
-    
+    //enums for different types of enterprise
      public enum EnterpriseType
      {
         Community("Community"),

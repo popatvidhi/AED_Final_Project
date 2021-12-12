@@ -17,7 +17,7 @@ public class PoliceEnterprise extends Enterprise{
     public PoliceEnterprise(String name){
         super(name,Enterprise.EnterpriseType.Police);
     }
-    
+    //hash map to for Police role addition
     @Override
     public HashSet<Role> getSupportedRole(){
         role.add(new PoliceRole());

@@ -18,6 +18,7 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public class ProviderRole extends Role{
+    //overriding main panel with provider work area whenever provider role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
         return new ProviderWorkArea(userProcessContainer,account,(ProviderOrganization)organization,enterprise,system);

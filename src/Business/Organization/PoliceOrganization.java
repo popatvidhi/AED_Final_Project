@@ -16,7 +16,7 @@ import java.util.HashSet;
  */
 public class PoliceOrganization extends Organization{
     PoliceDirectory policelist;
-    
+    //constructor to add police list to police directory
     public PoliceOrganization(String name)
     {
         super(Organization.Type.Police.getValue());
@@ -31,7 +31,7 @@ public class PoliceOrganization extends Organization{
     public void setPolicelist(PoliceDirectory policelist) {
         this.policelist = policelist;
     }
- 
+    //hasmap to support police role
     @Override
     public HashSet<Role> getSupportedRole(){
        role.add(new PoliceRole());

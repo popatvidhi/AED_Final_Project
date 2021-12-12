@@ -16,7 +16,7 @@ import java.util.HashSet;
  */
 public class VolunteerOrganization extends Organization{
     VolunteerDirectory volunteerList;
-
+    //constructor to add volunteer list to volunteer directory
     public VolunteerOrganization(String name) {
         super(Organization.Type.Volunteer.getValue());
         volunteerList= new VolunteerDirectory();
@@ -29,7 +29,7 @@ public class VolunteerOrganization extends Organization{
     public void setVolunteerList(VolunteerDirectory volunteerList) {
         this.volunteerList = volunteerList;
     }
-    
+    //hashmap to support volunteer role
     @Override
     public HashSet<Role> getSupportedRole(){
         role.add(new VolunteerRole());

@@ -13,29 +13,30 @@ import Business.WorkQueue.WorkQueue;
  */
 public class Police {
     private String Name;
-    private static int Count=0;
+    private static int Count=1;
     private String PoliceId;
     private WorkQueue workQueue;
-       public Police() {
+    //Police class constructor to autogenerate id
+    public Police() {
         
         PoliceId = "Police"+(++Count);
         workQueue= new WorkQueue();
     }
-       
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String Name) {
-        this.Name = Name;
-    }
-
+    
     public static int getCount() {
         return Count;
     }
 
     public static void setCount(int Count) {
         Police.Count = Count;
+    }
+    
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getPoliceId() {
@@ -53,9 +54,8 @@ public class Police {
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
     }
-       
-    
-        @Override
+          
+    @Override
     public String toString(){
         return Name;
     }

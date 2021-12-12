@@ -25,13 +25,13 @@ public class HospitalDirectory {
     public void setHospitaldirectory(ArrayList<Hospital> hospitaldirectory) {
         this.hospitaldirectory = hospitaldirectory;
     }
-    
+    //add a new doctor
     public Hospital addHospital(){
         Hospital h =new Hospital();
         hospitaldirectory.add(h);
         return h;
     }
-    
+    //remove a doctor
     public void removeHospital(Hospital hospital){
         hospitaldirectory.remove(hospital);   
     }

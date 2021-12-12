@@ -26,13 +26,13 @@ public class VictimDirectory {
     public void setChangeSeekerDirectory(ArrayList<Victim> changeSeekerDirectory) {
         this.changeSeekerDirectory = changeSeekerDirectory;
     }
-    
+    //add a new victim
     public Victim addChangeSeeker(){
         Victim cs= new Victim();
         changeSeekerDirectory.add(cs);
         return cs;
     }
-    
+    //remove a victim
     public void removeChangeSeeker(Victim cs){
         changeSeekerDirectory.remove(cs);
     }

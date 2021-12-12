@@ -63,6 +63,11 @@ public class OrganizationDirectory {
             organization.setOrgName(name);
             organizationList.add(organization);
         }
+        else if (type.getValue().equals(Organization.Type.FireMan.getValue())){
+            organization = new FireManOrganization(name);
+            organization.setOrgName(name);
+            organizationList.add(organization);
+        }
         
         return organization;
     }

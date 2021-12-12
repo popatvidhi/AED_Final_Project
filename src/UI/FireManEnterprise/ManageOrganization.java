@@ -51,7 +51,7 @@ public class ManageOrganization extends javax.swing.JPanel {
      
     private void populateCmb(){
         comboOrg.removeAllItems();
-        comboOrg.addItem(Organization.Type.Doctor);
+        comboOrg.addItem(Organization.Type.FireMan);
     }
     /**
      * This method is called from within the constructor to initialize the form.

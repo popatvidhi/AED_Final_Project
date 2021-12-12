@@ -3,44 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.HospitalEnterprise;
+package UI.FireManEnterprise;
 
-import UI.CommunityEnterprise.*;
-import UI.SystemAdmin.*;
-import Business.Ecosystem;
 import Business.Employee.Employee;
-import Business.Enterprise.Enterprise;
-import Business.Network.Network;
-import Business.Organization.DoctorOrganization;
-import Business.Organization.EventMakerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author vidhi
+ * @author ymayank97
  */
 public class ManageEmployee extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManageEnterprise
+     * Creates new form ManageEmployee
      */
-    private OrganizationDirectory orgdirectory;
+     private OrganizationDirectory orgdirectory;
     private JPanel userProcessContainer;
-    public ManageEmployee(JPanel userProcessContainer,OrganizationDirectory orgdirectory) {
+    public ManageEmployee() {
         initComponents();   
         this.userProcessContainer=userProcessContainer;
         this.orgdirectory=orgdirectory;
         populateComboOrganization();
         populateComboOrganizationEmp();
     }
+
     
-    private void populateTbl(Organization organization){
+       private void populateTbl(Organization organization){
         DefaultTableModel model = (DefaultTableModel) tblEmp.getModel();
         
         model.setRowCount(0);
@@ -107,7 +100,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1900, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +219,7 @@ public class ManageEmployee extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(230, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -261,7 +254,7 @@ public class ManageEmployee extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -281,16 +274,31 @@ public class ManageEmployee extends javax.swing.JPanel {
         if(txtName.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Text Field Cannot be Empty");
         }else{
-        
-        Organization organization =(Organization)comboOrgSelect.getSelectedItem();
-        String name = txtName.getText();
-        
-        organization.getEmployeeDirectory().createEmployee(name);
-        populateTbl(organization);
-        
-        txtName.setText("");
-      }
+
+            Organization organization =(Organization)comboOrgSelect.getSelectedItem();
+            String name = txtName.getText();
+
+            organization.getEmployeeDirectory().createEmployee(name);
+            populateTbl(organization);
+
+            txtName.setText("");
+        }
     }//GEN-LAST:event_btnAddEmployeeActionPerformed
+
+    
+     
+    
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+        // TODO add your handling code here:
+        char typedName = evt.getKeyChar();
+        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
+            evt.consume();
+        }
+        //Restrict the length to 256
+        if(txtName.getText().length() > 255){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNameKeyTyped
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -306,18 +314,6 @@ public class ManageEmployee extends javax.swing.JPanel {
             populateTbl(organization);
         }
     }//GEN-LAST:event_comboOrgActionPerformed
-
-    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
-        // TODO add your handling code here:
-        char typedName = evt.getKeyChar();
-        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
-            evt.consume();
-        }
-        //Restrict the length to 256 
-        if(txtName.getText().length() > 255){
-                evt.consume();
-        }
-    }//GEN-LAST:event_txtNameKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

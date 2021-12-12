@@ -35,7 +35,8 @@ public abstract class Organization {
         NGO("NGO Organization"),
         Provider("Provider"),
         Doctor("Doctor"),
-        Police("Police");
+        Police("Police"),
+        FireMan("FireMan");
         
         private String value;
         private Type(String value){

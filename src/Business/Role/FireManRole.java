@@ -7,25 +7,25 @@ package Business.Role;
 
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
+import Business.Organization.PoliceOrganization;
 import Business.UserAccount.UserAccount;
-import UI.DoctorWorkArea.DoctorWorkArea;
+import UI.PoliceWorkArea.PoliceWorkArea;
 import javax.swing.JPanel;
 
 /**
  *
  * @author vidhi
  */
-public class DoctorRole extends Role{
+public class FireManRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
-        return new DoctorWorkArea(userProcessContainer,account,(DoctorOrganization)organization,enterprise,system);
+        return new FireManWorkArea(userProcessContainer,account,(PoliceOrganization)organization,enterprise,system);
     }
         @Override
         public String toString()
 {
-   return Role.RoleType.Doctor.getValue();
+   return Role.RoleType.FireManRole.getValue();
 }
 
 }

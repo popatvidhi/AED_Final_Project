@@ -30,7 +30,8 @@ public abstract class Enterprise extends Organization {
         NGO("NGO"),
         Provider ("Provider"),
         Police("Police"),
-        Hospital("Hospital");
+        Hospital("Hospital"),
+        FireMan("FireMan");
         
         private String value;
         

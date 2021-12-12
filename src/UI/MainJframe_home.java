@@ -127,7 +127,7 @@ public class MainJframe_home extends javax.swing.JFrame {
 
         btnLogin.setBackground(new java.awt.Color(54, 38, 89));
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\ymaya\\Downloads\\login (1).png")); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/login (1).png"))); // NOI18N
         btnLogin.setBorderPainted(false);
         btnLogin.setContentAreaFilled(false);
         btnLogin.addActionListener(new java.awt.event.ActionListener() {

@@ -233,7 +233,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Community Enterprise"/>
+                <Property name="text" type="java.lang.String" value="NGO MANAGER WORK AREA"/>
               </Properties>
             </Component>
           </SubComponents>

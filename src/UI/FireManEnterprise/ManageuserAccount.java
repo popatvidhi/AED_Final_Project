@@ -8,7 +8,7 @@ package UI.FireManEnterprise;
 import Business.Ecosystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
-import Business.Organization.DoctorOrganization;
+import Business.Organization.FireManOrganization;
 import Business.Organization.Organization;
 import Business.Role.FireManRole;
 import Business.Role.Role;
@@ -296,7 +296,7 @@ public class ManageuserAccount extends javax.swing.JPanel {
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof DoctorOrganization){
+        if(organization instanceof FireManOrganization){
             comboRole.addItem(new FireManRole());
         }
         

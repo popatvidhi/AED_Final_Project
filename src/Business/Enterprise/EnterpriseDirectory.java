@@ -45,7 +45,12 @@ private ArrayList<Enterprise> enterpriseList;
             else if(type == Enterprise.EnterpriseType.Hospital){
             enterprise= new HospitalEnterprise(name);
             enterpriseList.add(enterprise);
+         } 
+            else if(type == Enterprise.EnterpriseType.FireMan){
+            enterprise= new FireManEnterprise(name);
+            enterpriseList.add(enterprise);
          }
+        
         return enterprise;
         
     }

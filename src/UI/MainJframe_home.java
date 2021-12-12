@@ -356,7 +356,7 @@ public class MainJframe_home extends javax.swing.JFrame {
         txtPassword.setText("");
     
         panelWorkArea.removeAll();
-        JPanel blankJP= new JPanel();
+        logout_panel blankJP= new logout_panel();
         panelWorkArea.add("blank",blankJP);
         CardLayout crdLyt=(CardLayout)panelWorkArea.getLayout();
         crdLyt.next(panelWorkArea);

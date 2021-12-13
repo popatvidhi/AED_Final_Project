@@ -34,7 +34,7 @@ public class ManageEnterprise extends javax.swing.JPanel {
         populateCombo();
 
     }
-    
+    //populate system network and enterprise combo
     private void populateCombo() {
         comboNetwork.removeAllItems();
         comboType.removeAllItems();
@@ -48,7 +48,7 @@ public class ManageEnterprise extends javax.swing.JPanel {
         }
 
     }
-    
+    //populate enterprise table
     private void populateTableEnterprise() {
         DefaultTableModel model = (DefaultTableModel) tblEnterprise.getModel();
 
@@ -269,7 +269,7 @@ public class ManageEnterprise extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //add enterprise
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         Network network = (Network) comboNetwork.getSelectedItem();
@@ -287,7 +287,7 @@ public class ManageEnterprise extends javax.swing.JPanel {
         populateTableEnterprise();
         txtName.setText("");
     }//GEN-LAST:event_btnAddActionPerformed
-
+    //delete enterprise
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRow= tblEnterprise.getSelectedRow();
@@ -314,7 +314,7 @@ public class ManageEnterprise extends javax.swing.JPanel {
             populateTableEnterprise();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
-
+    //go to previous page
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         panelWorkArea.remove(this);

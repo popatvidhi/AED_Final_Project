@@ -31,7 +31,7 @@ public class ManageNetwork extends javax.swing.JPanel {
         this.system=system;
         populateTableNetwork();
     }
-    
+    //populate network table
     public void populateTableNetwork(){
         DefaultTableModel model = (DefaultTableModel) tblNetwork.getModel();
 
@@ -228,7 +228,7 @@ public class ManageNetwork extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) panelWorkArea.getLayout();
         layout.previous(panelWorkArea);
     }//GEN-LAST:event_btnEnterpriseAdmin1ActionPerformed
-
+//add network
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         String name = txtName.getText();
@@ -239,7 +239,7 @@ public class ManageNetwork extends javax.swing.JPanel {
         populateTableNetwork();
         txtName.setText("");
     }//GEN-LAST:event_btnAddActionPerformed
-
+//delete network
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRow= tblNetwork.getSelectedRow();

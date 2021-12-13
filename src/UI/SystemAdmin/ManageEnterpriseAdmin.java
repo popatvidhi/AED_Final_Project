@@ -41,6 +41,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         populateTableEnterpriseAdmin();
         populateComboBoxNetwork();
     }
+    //populate admins
     private void populateTableEnterpriseAdmin() {
         DefaultTableModel model = (DefaultTableModel) tblEnterprise.getModel();
 
@@ -58,7 +59,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             }
         }
     }
-    
+    //populate user admins
     private void populateComboBoxNetwork() {
         comboNetwork.removeAllItems();
 
@@ -66,7 +67,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             comboNetwork.addItem(network);
         }
     }
-    
+    //populate enterprise - employee combo
     private void populateComboBoxEnterprise(Network network) {
         comboType.removeAllItems();
 
@@ -319,7 +320,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //populate network combo
     private void comboNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNetworkActionPerformed
         // TODO add your handling code here:
         Network network = (Network)comboNetwork.getSelectedItem();
@@ -327,7 +328,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             populateComboBoxEnterprise(network);
         }
     }//GEN-LAST:event_comboNetworkActionPerformed
-
+    //go to previoys page
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         panelWorkArea.remove(this);

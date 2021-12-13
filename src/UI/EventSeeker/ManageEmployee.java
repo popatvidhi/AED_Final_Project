@@ -5,19 +5,11 @@
  */
 package UI.EventSeeker;
 
-import UI.VolunteerOrganization.*;
-import UI.SystemAdmin.*;
-import Business.Ecosystem;
 import Business.Employee.Employee;
-import Business.Enterprise.Enterprise;
-import Business.Network.Network;
-import Business.Organization.EventMakerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.Organization.VictimOrganization;
-import Business.Organization.VolunteerOrganization;
 import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -40,7 +32,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         populateComboOrganization();
         populateComboOrganizationEmp();
     }
-    
+    //populate event seeker employee table by adding employees
     private void populateTbl(Organization organization){
         DefaultTableModel model = (DefaultTableModel) tblEmp.getModel();
         
@@ -54,7 +46,7 @@ public class ManageEmployee extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-    
+    //populate organization combo box
     public void populateComboOrganization(){
         comboOrg.removeAllItems();
         
@@ -64,6 +56,7 @@ public class ManageEmployee extends javax.swing.JPanel {
             
         }
     }
+    //populate event seeker - community organization combo box
     public void populateComboOrganizationEmp(){
         comboOrgSelect.removeAllItems();
         
@@ -284,11 +277,11 @@ public class ManageEmployee extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //add an employee
     private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
         // TODO add your handling code here:
         if(txtName.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Text Field Cannot be Empty");
+            JOptionPane.showMessageDialog(null,"Please fill the Empty fields");
         }else{
         
         Organization organization =(Organization)comboOrgSelect.getSelectedItem();
@@ -300,7 +293,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         txtName.setText("");
       }
     }//GEN-LAST:event_btnAddEmployeeActionPerformed
-
+    //go to previous page
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
@@ -315,7 +308,7 @@ public class ManageEmployee extends javax.swing.JPanel {
             populateTbl(organization);
         }
     }//GEN-LAST:event_comboOrgActionPerformed
-
+    //name validation
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
         // TODO add your handling code here:
         char typedName = evt.getKeyChar();

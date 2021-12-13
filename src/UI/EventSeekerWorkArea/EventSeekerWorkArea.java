@@ -9,11 +9,9 @@ package UI.EventSeekerWorkArea;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.EventMaker.EventMaker;
-import Business.Organization.EventMakerOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.VictimWorkRequest;
-import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,7 +45,7 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
 
         populateTableWorkQueue();
     }
-    
+    //populate table with victim request
      public void populateTableWorkQueue(){
          DefaultTableModel model = (DefaultTableModel) tblEvent.getModel();
         
@@ -228,11 +226,11 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
                 .addGap(68, 68, 68))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //post the request
     private void btnPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostActionPerformed
         // TODO add your handling code here:
         if(txtSubject.getText().isEmpty() || txtDesc.getText().isEmpty() || txtLoc.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Text Field Cannot be Empty");
+            JOptionPane.showMessageDialog(null,"Please fill the Empty fields");
         }else{
 
         String subject = txtSubject.getText();

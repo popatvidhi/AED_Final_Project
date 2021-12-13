@@ -273,7 +273,7 @@ public class ManageuserAccount extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-    
+    //populate all organizations added from directory 
     public void populateComboOrganization() {
         comboOrg.removeAllItems();
         System.out.println("Combo Organization");
@@ -282,7 +282,7 @@ public class ManageuserAccount extends javax.swing.JPanel {
             comboOrg.addItem(organization);
         }
     }
-    
+    //populate respective employees
     public void populateComboEmployee(Organization organization){
         comboEmp.removeAllItems();
         
@@ -290,7 +290,7 @@ public class ManageuserAccount extends javax.swing.JPanel {
             comboEmp.addItem(employee);
         }
     }
-    
+     //populate respective roles
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
@@ -300,7 +300,7 @@ public class ManageuserAccount extends javax.swing.JPanel {
         
       
     }
-    
+    //populate username and roles in table
     public void populateData() {
 
        DefaultTableModel model = (DefaultTableModel) tblUser.getModel();
@@ -317,11 +317,11 @@ public class ManageuserAccount extends javax.swing.JPanel {
         }
     }
     
-    
+    //add the user
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         // TODO add your handling code here:
         if(txtName.getText().isEmpty()|| txtPassword.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Text Field Cannot be Empty");
+            JOptionPane.showMessageDialog(null,"Please fill the Empty fields");
         }else{
             String userName = txtName.getText();
             String password = txtPassword.getText();
@@ -336,7 +336,7 @@ public class ManageuserAccount extends javax.swing.JPanel {
                 txtPassword.setText("");
             }
             else{
-                JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Username must be unique", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnAddUserActionPerformed
@@ -349,7 +349,7 @@ public class ManageuserAccount extends javax.swing.JPanel {
             populateComboRole(enterprise);
         }
     }//GEN-LAST:event_comboOrgActionPerformed
-
+    //go to previous page
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);

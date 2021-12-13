@@ -9,6 +9,7 @@ import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import UI.PoliceEnterprise.PoliceAdminWorkArea;
 import javax.swing.JPanel;
 
 /**
@@ -16,17 +17,15 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public class PoliceAdminRole extends Role{
-    //public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
-        //return new PoliceAdminWorkArea(userProcessContainer,/*account,(ChangeMakerOrganization)organization,*/enterprise,system);
-    //}   
+    //overriding main panel with police admin work area whenever police admin role is called
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
+        return new PoliceAdminWorkArea(userProcessContainer,enterprise,system);
+    }   
         @Override
         public String toString()
 {
    return Role.RoleType.PoliceAdminRole.getValue();
 }
 
-    @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Ecosystem system) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

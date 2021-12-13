@@ -23,7 +23,7 @@ public class OrganizationDirectory {
     public ArrayList<Organization> getOrganizationList() {
         return organizationList;
     }
-    
+    //creates new organizations and adds them to directory
     public Organization createOrganization(Organization.Type type,String name)
     {
     Organization organization = null;
@@ -60,6 +60,11 @@ public class OrganizationDirectory {
         }
         else if (type.getValue().equals(Organization.Type.Doctor.getValue())){
             organization = new DoctorOrganization();
+            organization.setOrgName(name);
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Organization.Type.FireMan.getValue())){
+            organization = new FireManOrganization(name);
             organization.setOrgName(name);
             organizationList.add(organization);
         }

@@ -14,21 +14,13 @@ import Business.WorkQueue.WorkQueue;
 public class Volunteer {
     private String volunteerName;
     private String id;
-    private static int count=0;
+    private static int count=1;
     private WorkQueue workqueue;
+    //Volunteer class constructor to autogenerate id
     public Volunteer() {
         id="Vol"+(++count);
         workqueue= new WorkQueue();
     }
-
-    public WorkQueue getWorkqueue() {
-        return workqueue;
-    }
-
-    public void setWorkqueue(WorkQueue workqueue) {
-        this.workqueue = workqueue;
-    }
-
     
     public String getVolunteerName() {
         return volunteerName;
@@ -36,6 +28,14 @@ public class Volunteer {
 
     public void setVolunteerName(String volunteerName) {
         this.volunteerName = volunteerName;
+    }
+    
+    public WorkQueue getWorkqueue() {
+        return workqueue;
+    }
+
+    public void setWorkqueue(WorkQueue workqueue) {
+        this.workqueue = workqueue;
     }
 
     public String getId() {

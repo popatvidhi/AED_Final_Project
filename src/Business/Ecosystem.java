@@ -33,7 +33,7 @@ public class Ecosystem extends Organization {
      }
      return business;
     }
-    
+    //constructor for Ecosystem class
     private Ecosystem()
     {
         super(null);
@@ -49,7 +49,7 @@ public class Ecosystem extends Organization {
     {
         business = system;
     }
-    
+    //add a network
     public Network addNetwork()
     {
       Network  network = new Network();

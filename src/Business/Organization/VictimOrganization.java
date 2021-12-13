@@ -16,6 +16,7 @@ import java.util.HashSet;
  */
 public class VictimOrganization extends Organization{
     VictimDirectory victimList;
+    //constructor to add victim list to victim directory
     public VictimOrganization()
     {
         super(Organization.Type.Victim.getValue());
@@ -29,7 +30,7 @@ public class VictimOrganization extends Organization{
     public void setChangeseekerlist(VictimDirectory victimList) {
         this.victimList = victimList;
     }
-    
+    //hashmap to support victim list
     @Override
     public HashSet<Role> getSupportedRole(){
         role.add(new VictimRole());

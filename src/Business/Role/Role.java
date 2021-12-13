@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public abstract class Role {
-    
+    //enums for types of roles
     public enum RoleType{
         SystemAdmin("SystemAdmin"),
         VictimAdmin("VictimAdmin"),
@@ -35,7 +35,10 @@ public abstract class Role {
         PoliceRole("PoliceRole"),
         PoliceAdminRole("PoliceAdminRole"),
         DoctorAdminRole("DoctorAdminRole"),
-        Doctor("Doctor");
+        Doctor("Doctor"),
+        FireManRole("FireManRole"),
+        FireManAdminRole("FireManAdminRole");
+        
         
         
         private String value;

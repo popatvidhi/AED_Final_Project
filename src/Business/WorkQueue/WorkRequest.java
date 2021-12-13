@@ -6,6 +6,7 @@
 package Business.WorkQueue;
 
 import Business.EventMaker.EventMaker;
+import Business.FireMan.FireMan;
 import Business.NGO.NGO;
 import Business.Police.Police;
 import Business.Provider.Item;
@@ -33,6 +34,15 @@ public abstract class WorkRequest {
     private Item item;
     private Volunteer volunteer;
     private Police police;
+    private FireMan fireman;
+
+    public FireMan getFireman() {
+        return fireman;
+    }
+
+    public void setFireman(FireMan fireman) {
+        this.fireman = fireman;
+    }
 
 
     

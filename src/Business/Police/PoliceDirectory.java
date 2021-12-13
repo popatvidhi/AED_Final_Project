@@ -27,13 +27,13 @@ public class PoliceDirectory {
         this.policeList = policeList;
     }
     
-    
-        public Police addPolice(){
+    //add a new police 
+    public Police addPolice(){
         Police l= new Police();
         policeList.add(l);
         return l;
     }
-    
+    //remove police
     public void removePolice(Police l){
         policeList.remove(l);
     }

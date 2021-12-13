@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public class EventMakerAdminRole extends Role{
-    
+    //overriding main panel with event maker admin work area whenever event maker admin role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
         return new EventMakerAdminWorkArea(userProcessContainer,/*account,(ChangeMakerOrganization)organization,*/enterprise/*,system*/);

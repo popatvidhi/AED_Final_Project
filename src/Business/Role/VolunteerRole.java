@@ -18,6 +18,7 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public class VolunteerRole extends Role{
+    //overriding main panel with volunteer work area whenever volunteer role is called
         @Override
         public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system)
         {

@@ -27,13 +27,13 @@ private ArrayList<EventMaker> eventMakerDirectory;
         this.eventMakerDirectory = changeMakerDirectory;
     }
     
-    
+    //add an event maker
     public EventMaker addChangeMaker(){
         EventMaker cm = new EventMaker();
         eventMakerDirectory.add(cm);
         return cm;
     }
-    
+    //remove an event maker
     public void removeChangeMaker(EventMaker cm){
         eventMakerDirectory.remove(cm);
     }

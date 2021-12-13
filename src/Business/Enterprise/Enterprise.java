@@ -23,14 +23,15 @@ public abstract class Enterprise extends Organization {
       this.enterpriseType= type;
       organizationDirectory = new OrganizationDirectory();
     }
-    
+    //enums for different types of enterprise
      public enum EnterpriseType
      {
         Community("Community"),
         NGO("NGO"),
         Provider ("Provider"),
         Police("Police"),
-        Hospital("Hospital");
+        Hospital("Hospital"),
+        FireMan("FireMan");
         
         private String value;
         

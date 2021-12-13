@@ -7,8 +7,10 @@ package Business.Role;
 
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
+import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import UI.DoctorWorkArea.DoctorWorkArea;
 import javax.swing.JPanel;
 
 /**
@@ -16,17 +18,15 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public class DoctorRole extends Role{
-    //public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
-        //return new DoctorWorkArea(userProcessContainer,account,(DoctorOrganization)organization,enterprise,system);
-    //}
+    //overriding main panel with doctore work area whenever doctor role is called
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
+        return new DoctorWorkArea(userProcessContainer,account,(DoctorOrganization)organization,enterprise,system);
+    }
         @Override
         public String toString()
 {
    return Role.RoleType.Doctor.getValue();
 }
 
-    @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Ecosystem system) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

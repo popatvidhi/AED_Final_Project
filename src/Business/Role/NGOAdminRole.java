@@ -9,6 +9,7 @@ import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import UI.NGOEnterprise.NGOAdminWorkArea;
 import javax.swing.JPanel;
 
 /**
@@ -16,18 +17,16 @@ import javax.swing.JPanel;
  * @author vidhi
  */
 public class NGOAdminRole extends Role{
-    //public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
-       // return new NGOAdminWorkArea(userProcessContainer,/*account,(ChangeMakerOrganization)organization,*/enterprise,system);
-    //}   
+    //overriding main panel with NGO admin work area whenever NGO admin role is called
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
+        return new NGOAdminWorkArea(userProcessContainer,enterprise,system);
+    }   
         @Override
         public String toString()
 {
    return Role.RoleType.NGOAdminRole.getValue();
 }
 
-    @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Ecosystem system) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
   
 }

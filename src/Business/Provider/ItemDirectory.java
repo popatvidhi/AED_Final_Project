@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ItemDirectory {
     private ArrayList<Item> itemList;
-
+    
     public ItemDirectory() {
         itemList=new ArrayList<>();
         
@@ -26,13 +26,13 @@ public class ItemDirectory {
     public void setSupplyList(ArrayList<Item> itemList) {
         this.itemList = itemList;
     }
-    
+    //add a new item
     public Item addSupply(){
         Item s = new Item();
         itemList.add(s);
         return s;
     }
-    
+    //remove item
     public void removeSupply(Item item){
         itemList.remove(item);
     }

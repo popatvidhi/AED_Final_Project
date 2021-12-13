@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  * @author ymayank97
  */
 public class SystemAdminRole extends Role {
- 
+    //overriding main panel with system admin work area whenever system admin role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
        return new SystemAdminWorkArea(userProcessContainer,system);

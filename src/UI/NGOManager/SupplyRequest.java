@@ -5,17 +5,12 @@
  */
 package UI.NGOManager;
 
-import UI.EventMakerWorkArea.*;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
-import Business.EventMaker.EventMaker;
-import Business.Organization.EventMakerOrganization;
 import Business.Organization.Organization;
 import Business.Provider.Provider;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ProviderWorkRequest;
-import Business.WorkQueue.VictimWorkRequest;
-import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -55,7 +50,7 @@ public class SupplyRequest extends javax.swing.JPanel {
 
         populateTableNGOWorkQueue();
     }
-
+    //populate supply requests
     public void populateTableNGOWorkQueue()
     {
       DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
@@ -287,7 +282,7 @@ public class SupplyRequest extends javax.swing.JPanel {
                 .addContainerGap(117, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //submit the item request
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
         try{ 
@@ -322,7 +317,7 @@ public class SupplyRequest extends javax.swing.JPanel {
         
 
     }//GEN-LAST:event_btnSubmitActionPerformed
-
+    //analysis of suuplies
     private void btnBarChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarChartActionPerformed
         // TODO add your handling code here:
         DefaultCategoryDataset d = new DefaultCategoryDataset();
@@ -362,14 +357,14 @@ public class SupplyRequest extends javax.swing.JPanel {
            f.setVisible(true);
            f.setSize(500,400);
     }//GEN-LAST:event_btnBarChartActionPerformed
-
+    //go to pervious page
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
-
+    //text validation
     private void txtReqKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReqKeyTyped
         // TODO add your handling code here:
         char typedReq = evt.getKeyChar();
@@ -381,7 +376,7 @@ public class SupplyRequest extends javax.swing.JPanel {
                 evt.consume();
         }
     }//GEN-LAST:event_txtReqKeyTyped
-
+    //quantity validation
     private void txtQntKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQntKeyTyped
         // TODO add your handling code here:
         char typedQnt = evt.getKeyChar();

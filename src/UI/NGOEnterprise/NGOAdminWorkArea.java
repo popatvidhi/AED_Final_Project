@@ -5,12 +5,9 @@
  */
 package UI.NGOEnterprise;
 
-import UI.CommunityEnterprise.*;
-import UI.EventMaker.*;
+
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.Organization;
-import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 

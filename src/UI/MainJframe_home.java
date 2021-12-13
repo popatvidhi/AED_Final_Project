@@ -116,6 +116,7 @@ public class MainJframe_home extends javax.swing.JFrame {
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/logout (1).png"))); // NOI18N
         btnLogout.setBorderPainted(false);
         btnLogout.setContentAreaFilled(false);
+        btnLogout.setEnabled(false);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);

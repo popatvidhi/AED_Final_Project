@@ -111,7 +111,7 @@ public class PoliceWorkArea extends javax.swing.JPanel {
 
         btnAssign.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         btnAssign.setForeground(new java.awt.Color(153, 0, 153));
-        btnAssign.setText("Assign To Me");
+        btnAssign.setText("Acknowledge");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
@@ -120,7 +120,7 @@ public class PoliceWorkArea extends javax.swing.JPanel {
 
         btnComplete.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         btnComplete.setForeground(new java.awt.Color(153, 0, 153));
-        btnComplete.setText("Complete");
+        btnComplete.setText("Responded");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCompleteActionPerformed(evt);
@@ -210,12 +210,15 @@ public class PoliceWorkArea extends javax.swing.JPanel {
         } else {
 
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
-
+            if(cswr.getStatus().equalsIgnoreCase("Requested")){ 
             cswr.setStatus("Police assigned the Request");
             cswr.setReciever(account);
 
             populatePoliceTable();
-
+            }
+            else{
+                 JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnAssignActionPerformed
     //complete the assigned request
@@ -227,12 +230,15 @@ public class PoliceWorkArea extends javax.swing.JPanel {
         } else {
 
             VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
-
+             if(p.getStatus().equalsIgnoreCase("Police assigned the Request")){ 
             p.setStatus("Complete");
             p.setReciever(account);
             JOptionPane.showMessageDialog(null, "You have completed the request successfully");
             populatePoliceTable();
-
+             }
+             else{
+                  JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+             }
         }  
     }//GEN-LAST:event_btnCompleteActionPerformed
 

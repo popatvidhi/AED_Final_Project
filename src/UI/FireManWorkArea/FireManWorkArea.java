@@ -195,11 +195,15 @@ public class FireManWorkArea extends javax.swing.JPanel {
         } else {
 
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            if(cswr.getStatus().equalsIgnoreCase("Assigned to the FireMan")){ 
+                cswr.setStatus("FireMan assigned the Request");
+                cswr.setReciever(account);
 
-            cswr.setStatus("FireMan assigned the Request");
-            cswr.setReciever(account);
-
-            populateFireManTable();
+                populateFireManTable();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
 
         }
     }//GEN-LAST:event_btnAssignActionPerformed
@@ -210,13 +214,17 @@ public class FireManWorkArea extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-
+            
             VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
-
+            if(p.getStatus().equalsIgnoreCase("FireMan assigned the Request")){ 
             p.setStatus("Complete");
             p.setReciever(account);
             JOptionPane.showMessageDialog(null, "You have completed the request successfully");
             populateFireManTable();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
 
         }  
     }//GEN-LAST:event_btnCompleteActionPerformed

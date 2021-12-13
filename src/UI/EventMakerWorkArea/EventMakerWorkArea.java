@@ -385,11 +385,17 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         } else {
 
             VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            
+            if(cswr.getStatus().equalsIgnoreCase("Requested")){
 
             cswr.setStatus("Pending");
             cswr.setReciever(account);
 
             populateTableWorkQueue();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
 
         }
     }//GEN-LAST:event_btnAssignToActionPerformed
@@ -400,7 +406,10 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
+            
+            
             VictimWorkRequest p = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            
             txtSubject.setText(p.getSubject());
             txtDesc.setText(p.getDescription());
             txtLoc.setText(p.getLocation());
@@ -415,11 +424,17 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         } else {
 
             VictimWorkRequest p = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+           
+            if(p.getStatus().equalsIgnoreCase("Pending")){
 
 
                     p.setStatus("Complete");
                     JOptionPane.showMessageDialog(null, "You have completed the request successfully");
                     populateTableWorkQueue();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
 
         }
     }//GEN-LAST:event_btnCompleteActionPerformed
@@ -433,9 +448,13 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             
 
             VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
-
+            if(cswr.getStatus().equalsIgnoreCase("Requested")){
             cswr.setStatus("Assigned To NGO");
             populateTableWorkQueue();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
             
         }
     }//GEN-LAST:event_btnNGOActionPerformed
@@ -450,14 +469,21 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equals("Assigned To Doctor")){
                 JOptionPane.showMessageDialog(null, "This request is already assigned to Doctor", "Warning", JOptionPane.WARNING_MESSAGE);
-            }else{
-                            JOptionPane.showMessageDialog(null, "Assigned to the Doctor", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+            
+            else{
+                
+            if(cswr.getStatus().equalsIgnoreCase("Requested")){
+            JOptionPane.showMessageDialog(null, "Assigned to the Doctor");
             cswr.setStatus("Assigned To Doctor");
 
-            
             populateTableWorkQueue();
             }
-    }          
+            else{
+                JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+    } 
+        }
     }//GEN-LAST:event_btnHealthActionPerformed
     //assign request to police
     private void btnPoliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliceActionPerformed
@@ -470,9 +496,16 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             if(cswr.getStatus().equals("Assigned to the Police")){
                 JOptionPane.showMessageDialog(null, "This request is already assigned to Police", "Warning", JOptionPane.WARNING_MESSAGE);
             }
+            else{
+               if(cswr.getStatus().equalsIgnoreCase("Requested")){ 
             JOptionPane.showMessageDialog(null, "Assigned to the Police", "Warning", JOptionPane.WARNING_MESSAGE);
             cswr.setStatus("Assigned To Police");
             populateTableWorkQueue();
+            }
+               else{
+                   JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+               }
+            }
             
         }
     }//GEN-LAST:event_btnPoliceActionPerformed
@@ -487,10 +520,17 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             if(cswr.getStatus().equals("Assigned to the FireMan")){
                 JOptionPane.showMessageDialog(null, "This request is already assigned to FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-            JOptionPane.showMessageDialog(null, "Assigned to the FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
-            cswr.setStatus("Assigned To FireMan");
-            populateTableWorkQueue();
-            
+            else{
+                if(cswr.getStatus().equalsIgnoreCase("Requested")){ 
+                   
+                JOptionPane.showMessageDialog(null, "Assigned to the FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
+                cswr.setStatus("Assigned To FireMan");
+                populateTableWorkQueue();
+            }
+                else{
+                     JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+            }
         }
     }//GEN-LAST:event_btnFireActionPerformed
 

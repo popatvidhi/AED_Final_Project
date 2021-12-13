@@ -543,12 +543,15 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         else {
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
 
-
+            if(cswr.getStatus().equalsIgnoreCase("Requested")){
             cswr.setStatus("NGO Assigned the Request");
             cswr.setReciever(account);
 
             populateTableWorkQueue();
-
+            }
+            else{
+                 JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnAssignActionPerformed
     //complete the request
@@ -561,11 +564,15 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         else {
 
             VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
-
+            if(p.getStatus().equalsIgnoreCase("NGO Assigned the Request")){
                     p.setStatus("Complete");
                     p.setReciever(account);
                     JOptionPane.showMessageDialog(null, "You have completed the request successfully");
                     populateTableWorkQueue();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
 
         }
     }//GEN-LAST:event_btnCompleteActionPerformed

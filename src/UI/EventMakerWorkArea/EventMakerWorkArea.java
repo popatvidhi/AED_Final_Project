@@ -45,10 +45,8 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         for (EventMaker eventmaker : ((EventMakerOrganization)organization).getChangemakerlist().getChangeMakerDirectory()) {
             if (account.getEmployee().getName().equals(eventmaker.getName())) {
                  em=eventmaker;
-                System.out.println("ChangeMaker Name" + em.getName());
             }
         }
-        System.out.println("busi" + system.getWorkQueue().getWorkRequestList().size());
         if (em.getWorkQueue() == null) {
             WorkQueue w = new WorkQueue();
             em.setWorkQueue(w);
@@ -56,7 +54,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         
         populateTableWorkQueue();
     }
-
+    //populate all the requests from victim work request queue
     public void populateTableWorkQueue(){
          DefaultTableModel model = (DefaultTableModel) tblEvent.getModel();
         
@@ -189,14 +187,17 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(153, 0, 153));
         jLabel4.setText("Location");
 
+        txtDesc.setEditable(false);
         txtDesc.setColumns(20);
         txtDesc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtDesc.setRows(5);
         jScrollPane2.setViewportView(txtDesc);
 
+        txtSubject.setEditable(false);
         txtSubject.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
         txtSubject.setForeground(new java.awt.Color(153, 0, 153));
 
+        txtLoc.setEditable(false);
         txtLoc.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
         txtLoc.setForeground(new java.awt.Color(153, 0, 153));
 
@@ -376,12 +377,12 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                 .addGap(0, 60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //assign the request to me
     private void btnAssignToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblEvent.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
             VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
@@ -393,12 +394,12 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_btnAssignToActionPerformed
-
+    //view the request 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblEvent.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             VictimWorkRequest p = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
             txtSubject.setText(p.getSubject());
@@ -406,29 +407,29 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             txtLoc.setText(p.getLocation());
         }
     }//GEN-LAST:event_btnViewActionPerformed
-
+    //complete the assigned request
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblEvent.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
             VictimWorkRequest p = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
 
 
                     p.setStatus("Complete");
-                    JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+                    JOptionPane.showMessageDialog(null, "You have completed the request successfully");
                     populateTableWorkQueue();
 
         }
     }//GEN-LAST:event_btnCompleteActionPerformed
-
+    //assign request to NGO
     private void btnNGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNGOActionPerformed
         // TODO add your handling code here:
          int selectedRow = tblEvent.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please request to forward to the NGO", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the NGO", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             
 
@@ -439,12 +440,12 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             
         }
     }//GEN-LAST:event_btnNGOActionPerformed
-
+    //assign request to healthcare
     private void btnHealthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHealthActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblEvent.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please request to forward to the Doctor", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the Doctor", "Warning", JOptionPane.WARNING_MESSAGE);
         } else{
             
             VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
@@ -459,12 +460,12 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             }
     }          
     }//GEN-LAST:event_btnHealthActionPerformed
-
+    //assign request to police
     private void btnPoliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliceActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblEvent.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please request to forward to the Police", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the Police", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equals("Assigned to the Police")){
@@ -476,12 +477,12 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             
         }
     }//GEN-LAST:event_btnPoliceActionPerformed
-
+    //assign request to fire department
     private void btnFireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFireActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblEvent.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please request to forward to the FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equals("Assigned to the FireMan")){

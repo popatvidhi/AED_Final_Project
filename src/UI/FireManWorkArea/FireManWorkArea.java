@@ -11,7 +11,6 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.FireManOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.FireManWorkRequest;
 import Business.WorkQueue.VictimWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
@@ -43,7 +42,7 @@ public class FireManWorkArea extends javax.swing.JPanel {
          populateFireManTable();
     }
 
-    
+    //populate victim requets to fire man
     public void populateFireManTable(){
 
          DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
@@ -187,36 +186,36 @@ public class FireManWorkArea extends javax.swing.JPanel {
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //assign the request to myself i.e fireman
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRequests.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
 
-            cswr.setStatus("Police assigned the Request");
+            cswr.setStatus("FireMan assigned the Request");
             cswr.setReciever(account);
 
             populateFireManTable();
 
         }
     }//GEN-LAST:event_btnAssignActionPerformed
-
+    //complete the assigned request
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRequests.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
             VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
 
             p.setStatus("Complete");
             p.setReciever(account);
-            JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+            JOptionPane.showMessageDialog(null, "You have completed the request successfully");
             populateFireManTable();
 
         }  

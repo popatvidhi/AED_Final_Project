@@ -305,6 +305,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="txtDesc">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -316,6 +317,7 @@
         </Container>
         <Component class="javax.swing.JTextField" name="txtSubject">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="28" style="0"/>
             </Property>
@@ -326,6 +328,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtLoc">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="28" style="0"/>
             </Property>

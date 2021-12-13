@@ -41,7 +41,7 @@ public class PoliceWorkArea extends javax.swing.JPanel {
          populatePoliceTable();
     }
 
-    
+    //victim request to police is populated here
     public void populatePoliceTable(){
 
          DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
@@ -133,11 +133,11 @@ public class PoliceWorkArea extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Name", "Subject", "Description", "Location", "Date", "Status", "Change Maker", "ID"
+                "Name", "Subject", "Description", "Location", "Date", "Status", "Change Maker"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -201,12 +201,12 @@ public class PoliceWorkArea extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //assign to myself i.e police
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRequests.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
@@ -218,19 +218,19 @@ public class PoliceWorkArea extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_btnAssignActionPerformed
-
+    //complete the assigned request
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRequests.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
             VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
 
             p.setStatus("Complete");
             p.setReciever(account);
-            JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+            JOptionPane.showMessageDialog(null, "You have completed the request successfully");
             populatePoliceTable();
 
         }  

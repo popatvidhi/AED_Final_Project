@@ -33,7 +33,7 @@ public class ManageOrganization extends javax.swing.JPanel {
         populateCmb();
 
     }
-    
+    //populate newly added organization
      private void populateTbl(){
         
         DefaultTableModel model = (DefaultTableModel) tblOrg.getModel();
@@ -49,7 +49,7 @@ public class ManageOrganization extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-     
+     //populate provider organization in combo box
     private void populateCmb(){
         comboOrg.removeAllItems();
         comboOrg.addItem(Organization.Type.Provider);
@@ -237,7 +237,7 @@ public class ManageOrganization extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //add an organization
     private void btnAddOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddOrganizationActionPerformed
         // TODO add your handling code here:
         if(txtName.getText().isEmpty()){
@@ -248,7 +248,7 @@ public class ManageOrganization extends javax.swing.JPanel {
             populateTbl();
         }
     }//GEN-LAST:event_btnAddOrganizationActionPerformed
-
+    //name validation
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
         // TODO add your handling code here:
         char typedName = evt.getKeyChar();
@@ -260,7 +260,7 @@ public class ManageOrganization extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_txtNameKeyTyped
-
+    //go to previous page 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);

@@ -39,7 +39,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
         populateData();
 
     }
-    
+    //populate all organizations added from directory
     public void populateComboOrganization() {
         comboOrg.removeAllItems();
 
@@ -47,7 +47,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
             comboOrg.addItem(organization);
         }
     }
-    
+    //populate respective employees
     public void populateComboEmployee(Organization organization){
         comboEmp.removeAllItems();
         
@@ -55,7 +55,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
             comboEmp.addItem(employee);
         }
     }
-    
+    //populate respective roles
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
@@ -65,7 +65,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
         }
       
     }
-    
+     //populate username and roles in table
     public void populateData() {
 
         DefaultTableModel model = (DefaultTableModel) tblUser.getModel();
@@ -322,7 +322,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //add the user
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         // TODO add your handling code here:
         if(txtName.getText().isEmpty()|| txtPassword.getText().isEmpty()){
@@ -360,7 +360,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
             populateComboRole(enterprise);
         }
     }//GEN-LAST:event_comboOrgActionPerformed
-
+    //go to previous page
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);

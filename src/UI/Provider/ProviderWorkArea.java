@@ -5,25 +5,17 @@
  */
 package UI.Provider;
 
-import UI.VolunteerOrganization.*;
-import UI.EventMakerWorkArea.*;
+
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
-import Business.EventMaker.EventMaker;
-import Business.Organization.EventMakerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.ProviderOrganization;
-import Business.Organization.VolunteerOrganization;
 import Business.Provider.Item;
 import Business.Provider.Provider;
 import Business.UserAccount.UserAccount;
-import Business.Volunteer.Volunteer;
-import Business.WorkQueue.NGOWorkRequest;
 import Business.WorkQueue.ProviderWorkRequest;
-import Business.WorkQueue.VictimWorkRequest;
 import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
-import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -65,7 +57,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         populateTableSupply();
         populateTableCreate();
     }
-    
+    //provide the required supplies on request table
     public void populateTableSupply()
     {
         DefaultTableModel model = (DefaultTableModel) tblProvideReq.getModel();
@@ -87,7 +79,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
            }
         }
     }
-    
+    //create supply request
     public void populateTableCreate(){
         
             DefaultTableModel model = (DefaultTableModel) tblCreate.getModel();
@@ -340,12 +332,12 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                 .addGap(11, 11, 11))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //assign the supplu to provider
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblProvideReq.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
             ProviderWorkRequest nswr = (ProviderWorkRequest) tblProvideReq.getValueAt(selectedRow, 3);
@@ -359,13 +351,13 @@ public class ProviderWorkArea extends javax.swing.JPanel {
       
         
     }//GEN-LAST:event_btnAssignActionPerformed
-
+    //complete the request
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblProvideReq.getSelectedRow();
      
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
             ProviderWorkRequest pwr = (ProviderWorkRequest) tblProvideReq.getValueAt(selectedRow, 3);
@@ -374,7 +366,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                     UserAccount a = pwr.getSender();
                     int temp = 0;
                     if (p.getItemDirectory().getSupplyList().size() <= 0) {
-                        JOptionPane.showMessageDialog(null, "No Stock available. Request from Supplier");
+                        JOptionPane.showMessageDialog(null, "No Stock available. Request from Provider");
                         return;
                     }
                     for (Item item : p.getItemDirectory().getSupplyList()) {
@@ -392,7 +384,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                    
                     if(temp==1){
                     pwr.setStatus("Complete");
-                    JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+                    JOptionPane.showMessageDialog(null, "You have completed the request successfully");
                     }else{
                     pwr.setStatus("Requested");   
                     JOptionPane.showMessageDialog(null, "No Stock Available, Request Failed !!","Warning",JOptionPane.WARNING_MESSAGE);
@@ -408,6 +400,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnCompleteActionPerformed
     }
+    //create the request for suuplies
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         String type = comboType.getSelectedItem().toString();
@@ -433,7 +426,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         txtReq.setText("");
         txtQuantity.setText("");
     }//GEN-LAST:event_btnCreateActionPerformed
-
+    //text validation
     private void txtReqKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReqKeyTyped
         // TODO add your handling code here:
         char typedReq = evt.getKeyChar();
@@ -445,7 +438,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                 evt.consume();
         }
     }//GEN-LAST:event_txtReqKeyTyped
-
+    //quntity validation
     private void txtQuantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQuantityKeyTyped
         // TODO add your handling code here:
         char typedQnt = evt.getKeyChar();

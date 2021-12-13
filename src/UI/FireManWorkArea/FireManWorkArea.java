@@ -195,7 +195,7 @@ public class FireManWorkArea extends javax.swing.JPanel {
         } else {
 
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
-            if(cswr.getStatus().equalsIgnoreCase("Assigned to the FireMan")){ 
+            if(cswr.getStatus().equalsIgnoreCase("Assigned to FireMan")){ 
                 cswr.setStatus("FireMan assigned the Request");
                 cswr.setReciever(account);
 

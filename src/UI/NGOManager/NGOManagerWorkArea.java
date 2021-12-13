@@ -543,7 +543,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         else {
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
 
-            if(cswr.getStatus().equalsIgnoreCase("Requested")){
+            if(cswr.getStatus().equalsIgnoreCase("Assigned to NGO")){
             cswr.setStatus("NGO Assigned the Request");
             cswr.setReciever(account);
 

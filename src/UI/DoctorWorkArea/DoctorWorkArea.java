@@ -212,7 +212,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         } else {
 
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
-            if(cswr.getStatus().equalsIgnoreCase("Requested")){
+            if(cswr.getStatus().equalsIgnoreCase("Assigned To Doctor")){
             cswr.setStatus("Doctor assigned the Request");
             cswr.setReciever(account);
 
@@ -233,11 +233,15 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         } else {
 
             VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
-
+            if(p.getStatus().equalsIgnoreCase("Doctor assigned the Request")){
             p.setStatus("Complete");
             p.setReciever(account);
             JOptionPane.showMessageDialog(null, "You have completed the request successfully");
             populateDoctorTable();
+             }
+             else{
+                  JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+             }
 
         }  
     }//GEN-LAST:event_btnCompleteActionPerformed

@@ -14,8 +14,11 @@ import Business.WorkQueue.VictimWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -54,7 +57,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         populateTableEvent();
         populateTableWorkQueue();
     }
-
+    //populate assigned NGO request
     public void populateTableEvent()
     {
          DefaultTableModel model = (DefaultTableModel) tblNgoEvents.getModel();
@@ -76,7 +79,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
            }
         }
     }
-    
+    //populate victim request to NGO
     public void populateTableWorkQueue(){
          DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
         
@@ -227,6 +230,12 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Create event", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(153, 0, 153))); // NOI18N
         jPanel3.setOpaque(false);
 
+        txtVolunteers.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtVolunteersKeyTyped(evt);
+            }
+        });
+
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 0, 153));
         jLabel7.setText("Numbers of Volunteers");
@@ -308,9 +317,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                             .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,7 +440,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //volunteer analysis graph
     private void btnAnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalysisActionPerformed
         DefaultCategoryDataset d = new DefaultCategoryDataset();
 
@@ -457,17 +464,33 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
     private void txtLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocationActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLocationActionPerformed
-
+    //create request for volunteers
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
        try{
         if(txtTitle.getText().isEmpty() || txtDesc.getText().isEmpty() || txtLocation.getText().isEmpty() || txtVolunteers.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Text Field Cannot be Empty");
+            JOptionPane.showMessageDialog(null,"Please fill the Empty fields");
         }else{
 
         String event = txtTitle.getText();
         String desp = txtDesc.getText();
         String location = txtLocation.getText();
         Date date = dateChooser.getDate();
+        Date curDate = new Date();
+
+        Date d1 = null,d2 = null;
+        SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+        String s3 = sdformat.format(date);
+        String s4 = sdformat.format(curDate);
+            try {
+                d1 = sdformat.parse(s3);
+                d2 = sdformat.parse(s4);
+            } catch (ParseException ex) {
+                Logger.getLogger(NGOManagerWorkArea.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        if(d1.compareTo(d2) < 0 ){
+            JOptionPane.showMessageDialog(null, "Past dates are not allowed", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        }
         int req = Integer.parseInt(txtVolunteers.getText());
         
         if(event.equals("") || event.isEmpty() && desp.equals("") || desp.isEmpty() && location.equals("")|| location.isEmpty())
@@ -496,39 +519,39 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         }
         }catch(NumberFormatException e){}
     }//GEN-LAST:event_btnCreateActionPerformed
-
+    //assign the request to myself i.e NGO
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         int selectedRow = tblRequests.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
 
-            cswr.setStatus("NGO ASSIGNED the Request");
+            cswr.setStatus("NGO Assigned the Request");
             cswr.setReciever(account);
 
             populateTableWorkQueue();
 
         }
     }//GEN-LAST:event_btnAssignActionPerformed
-
+    //complete the request
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
         int selectedRow = tblRequests.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
             VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
 
                     p.setStatus("Complete");
                     p.setReciever(account);
-                    JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+                    JOptionPane.showMessageDialog(null, "You have completed the request successfully");
                     populateTableWorkQueue();
 
         }
     }//GEN-LAST:event_btnCompleteActionPerformed
-
+    //request for supplies
     private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
         // TODO add your handling code here:
         SupplyRequest sr = new SupplyRequest(userProcessContainer,account,organization, enterprise,system);
@@ -536,6 +559,18 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnRequestActionPerformed
+
+    private void txtVolunteersKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVolunteersKeyTyped
+        // TODO add your handling code here:
+        char typedVol = evt.getKeyChar();
+        if(!Character.isDigit(typedVol)){
+            evt.consume();
+        }
+        //Restrict the length to 3 
+        if(txtVolunteers.getText().length() > 2){
+                evt.consume();
+        }
+    }//GEN-LAST:event_txtVolunteersKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

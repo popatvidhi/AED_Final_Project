@@ -5,27 +5,16 @@
  */
 package UI.NGOEnterprise;
 
-import UI.CommunityEnterprise.*;
-import UI.SystemAdmin.*;
+
 import Business.Ecosystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
-import Business.EventMaker.EventMaker;
-import Business.Network.Network;
-import Business.Organization.EventMakerOrganization;
 import Business.Organization.NGOOrganization;
 import Business.Organization.Organization;
-import Business.Organization.VictimOrganization;
-import Business.Organization.VolunteerOrganization;
-import Business.Role.EventMakerAdminRole;
-import Business.Role.EventMakerRole;
 import Business.Role.NGOManagerRole;
 import Business.Role.Role;
-import Business.Role.VictimAdminRole;
-import Business.Role.VolunteerAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -49,7 +38,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
         populateData();
 
     }
-    
+    //populate all organizations added from directory
     public void populateComboOrganization() {
         comboOrg.removeAllItems();
 
@@ -57,7 +46,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
             comboOrg.addItem(organization);
         }
     }
-    
+     //populate respective employees
     public void populateComboEmployee(Organization organization){
         comboEmp.removeAllItems();
         
@@ -65,7 +54,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
             comboEmp.addItem(employee);
         }
     }
-    
+    //populate respective roles
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
@@ -74,7 +63,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
         }
       
     }
-    
+    //populate username and roles in table
     public void populateData() {
 
         DefaultTableModel model = (DefaultTableModel) tblUser.getModel();
@@ -316,11 +305,11 @@ public class ManageUserAccount extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //add user
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         // TODO add your handling code here:
         if(txtName.getText().isEmpty()|| txtPassword.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Text Field Cannot be Empty");
+            JOptionPane.showMessageDialog(null,"Please fill the Empty fields");
         }else{        
             String userName = txtName.getText();
         String password = txtPassword.getText();
@@ -335,11 +324,11 @@ public class ManageUserAccount extends javax.swing.JPanel {
         txtPassword.setText("");
         }
         else{
-           JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE); 
+           JOptionPane.showMessageDialog(null, "Username must be unique", "Warning", JOptionPane.WARNING_MESSAGE); 
         }
 }
     }//GEN-LAST:event_btnAddUserActionPerformed
-
+    //go to previous page
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);

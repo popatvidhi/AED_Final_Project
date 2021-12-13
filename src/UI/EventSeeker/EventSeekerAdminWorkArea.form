@@ -102,7 +102,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Change Seeker Organization"/>
+                <Property name="text" type="java.lang.String" value="Event Seeker Organization"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -115,7 +115,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="0" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Welcome, You&apos;re logged in as Change Seeker Admin"/>
+            <Property name="text" type="java.lang.String" value="Welcome, You&apos;re logged in as Event Seeker Admin"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel3">

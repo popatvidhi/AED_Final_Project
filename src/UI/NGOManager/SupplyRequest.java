@@ -331,16 +331,16 @@ public class SupplyRequest extends javax.swing.JPanel {
            {
               
               if(((ProviderWorkRequest) work).getRtype().equals("Food")){
-                  b=b+1;
+                  b=b+((ProviderWorkRequest) work).getQuantity();
               }
               if(((ProviderWorkRequest) work).getRtype().equals("Clothes")){
-                  c=c+1;
+                  c=c+((ProviderWorkRequest) work).getQuantity();
               }
               if(((ProviderWorkRequest) work).getRtype().equals("Medicine")){
-                  m=m+1;
+                  m=m+((ProviderWorkRequest) work).getQuantity();
               }
               if(((ProviderWorkRequest) work).getRtype().equals("Education")){
-                  n=n+1;
+                  n=n+((ProviderWorkRequest) work).getQuantity();
               }
            }
         }

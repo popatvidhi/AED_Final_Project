@@ -500,7 +500,8 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                 Logger.getLogger(NGOManagerWorkArea.class.getName()).log(Level.SEVERE, null, ex);
             }
         if(d1.compareTo(d2) < 0 ){
-            JOptionPane.showMessageDialog(null, "Past dates are not allowed", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Past dates are not allowed");
+            return;
 
         }
         int req = Integer.parseInt(txtVolunteers.getText());
@@ -534,11 +535,14 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
     //assign the request to myself i.e NGO
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         int selectedRow = tblRequests.getSelectedRow();
+        
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-
+        } 
+         
+        else {
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+
 
             cswr.setStatus("NGO Assigned the Request");
             cswr.setReciever(account);
@@ -550,9 +554,11 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
     //complete the request
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
         int selectedRow = tblRequests.getSelectedRow();
+        
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
+        } 
+        else {
 
             VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
 

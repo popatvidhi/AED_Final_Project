@@ -118,7 +118,7 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Event Name", "Subject", "Description", "Location", "Date", "Status", "Event Maker"
+                "Victim Name", "Subject", "Description", "Location", "Date", "Status", "Event Maker"
             }
         ));
         jScrollPane1.setViewportView(tblEvent);
@@ -132,7 +132,7 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
         jLabel4.setText("Location");
 
         txtDesc.setColumns(20);
-        txtDesc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtDesc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtDesc.setRows(5);
         jScrollPane2.setViewportView(txtDesc);
 

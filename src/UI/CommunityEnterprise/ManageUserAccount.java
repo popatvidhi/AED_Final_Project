@@ -136,7 +136,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
                 .addGap(0, 0, 0))
         );
 
-        tblUser.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        tblUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

@@ -176,7 +176,7 @@ public class DashboardVolunteer extends javax.swing.JPanel {
         jLabel4.setText("Title");
 
         txtDesc.setColumns(20);
-        txtDesc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtDesc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtDesc.setRows(5);
         txtDesc.setEnabled(false);
         jScrollPane2.setViewportView(txtDesc);
